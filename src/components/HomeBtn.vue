@@ -1,10 +1,11 @@
 <script>
+import { RouterLink } from 'vue-router';
 export default {
-
+    components: { RouterLink }
 }
 </script>
 <template>
-    <RouterLink to="/test">Start</RouterLink>
+    <RouterLink to="/">Hem Icon</RouterLink>
 </template>
 <style>
 a {
