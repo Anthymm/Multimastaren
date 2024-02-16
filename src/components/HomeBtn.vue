@@ -5,16 +5,13 @@ export default {
 }
 </script>
 <template>
-    <RouterLink to="/">Hem Icon</RouterLink>
+    <RouterLink to="/"><i class="bi bi-house-door-fill"></i></RouterLink>
 </template>
 <style>
-a {
-    color: #955A00;
+i {
+    color: #000;
     font-size: 2rem;
-    text-decoration: none;
     background-color: #BCD7E7;
-    padding: 1rem 3rem;
-    text-align: center;
     border-radius: 17px;
 }
 </style>
