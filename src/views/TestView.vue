@@ -7,34 +7,25 @@ export default {
     },
     created() {
         this.generateTables();
-        // this.createTable();
-        // this.selectArr();
-        // console.log(this.selectedQuestion[this.selectedIndex], this.selectedArr[this.selectedIndex])
-        // console.log(`randomNumber = ${this.randomNumber}, selectedIndex = ${this.selectedIndex}`)
-        // console.log(`randomNumber- väljer arr från tables + questions`)
-        // console.log(`selectedIndex- väljer index i valda arr `)
-
-        // console.log(tables[0][1])
         console.log(this.tables[0][0].question)
         console.log(this.tables[0][0].answer)
         console.log(this.randomNumber, this.randomNumber2)
     },
     data() {
         return {
-            // timesOne: [],
-            // tables: {},
-            // questions: {},
-            randomNumber: Math.floor(Math.random() * 10),
-            randomNumber2: Math.floor(Math.random() * 10),
-            // selectedArr: null,
-            // selectedQuestion: null,
-            // selectedIndex: 5,
-            tables: []
+            randomNumber: 0,
+            randomNumber2: 0,
+            // randomNumber: Math.floor(Math.random() * 10),
+            // randomNumber2: Math.floor(Math.random() * 10),
+            tables: [],
+            userAnswer: null,
+            correctAnswer: null,
+            nextBtnDisable: true
         };
     },
     methods: {
         generateTables() {
-            for (let i = 1; i <= 10; i++) {
+            for (let i = 1; i <= 5; i++) {
             const table = [];
             for (let j = 1; j <= 10; j++) {
                 table.push({ question: `${i} x ${j} =`, answer: i * j });
@@ -42,27 +33,25 @@ export default {
             this.tables.push(table);
             }
         },
-
-        // createTable() {
-        //     let temporaryAnswer = []
-        //     let temporaryQuestion = []
-
-        //     for (let i = 1; i <= 5; i++) {
-        //         for (let j = 1; j <= 10; j++) {
-        //             temporaryAnswer.push(i * j)
-        //             temporaryQuestion.push(i + '*' + j + '=')
-        //         }
-        //         this.tables["times" + i] = temporaryAnswer
-        //         this.questions["times" + i] = temporaryQuestion
-        //         temporaryAnswer = []
-        //         temporaryQuestion = []
-        //     }
-
-        // },
-        // selectArr(){
-        //     this.selectedArr = this.tables["times" + this.randomNumber]
-        //     this.selectedQuestion = this.questions["times" + this.randomNumber]
-        // }
+        onAnswer (){
+            if (this.userAnswer === this.tables[this.randomNumber][this.randomNumber2].answer){
+                this.correctAnswer = 'Rätt!'
+            }else{
+                this.correctAnswer = `Fel, rätt svar är: ${this.tables[this.randomNumber][this.randomNumber2].answer}`
+            }
+            this.nextBtnDisable = false
+        },
+        nextQuestion(){
+            this.userAnswer = null
+            this.correctAnswer = null
+            if(this.randomNumber2 <= 8){
+                this.randomNumber2++
+            }else{
+                this.randomNumber++
+                this.randomNumber2 = 0
+            }
+            this.nextBtnDisable = true
+        }
     },
 };
 </script>
@@ -71,11 +60,11 @@ export default {
     <div>
         <HomeBtn/>
         <h1 class="text">{{ this.tables[this.randomNumber][this.randomNumber2].question}} {{ this.tables[this.randomNumber][this.randomNumber2].answer}}</h1>
+        <input type="number" v-model="userAnswer" /> {{ userAnswer }} <input type="button" @click="onAnswer" value="Svara"/> <br/>
+        {{ correctAnswer }} <br/>
+        <input type="button" :disabled="nextBtnDisable" @click="nextQuestion" value="Nästa"/>
     </div>
 </template>
 
 <style>
-.text{
-    color: white
-}
 </style>
