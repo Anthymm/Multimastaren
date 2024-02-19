@@ -16,8 +16,15 @@ a {
     text-align: center;
     border-radius: 17px;
     box-shadow: #000000 3px 3px 6px 1px;
-    text-decoration: none;
- 
-    
+}
+a:focus{
+  text-decoration: none;
+  color: #955A00;
+  font-size: 1.7rem;
+}
+a:hover{
+  text-decoration: none;
+  color: #955A00;
+  font-size: 1.7rem;
 }
 </style>
