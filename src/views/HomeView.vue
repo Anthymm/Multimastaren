@@ -8,6 +8,9 @@ export default {
 };
 </script>
 <template>
+  
+    
+ 
   <div class="box">
     <div class="container">
       <div class="grid">
@@ -36,10 +39,11 @@ export default {
       </div>
     </div>
   </div>
+
 </template>
 <style>
 body {
-  background-color: #03273b;
+  /* background-color: #03273b; */
   font-family: jaldi;
 }
 
@@ -53,11 +57,11 @@ body {
   display: block;
   margin-top: 100px;
 }
-.container {
+/* .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-}
+} */
 
 .grid {
   padding: 20px;
@@ -68,7 +72,8 @@ body {
 }
 
 .start {
-  padding: 20px;
+
+   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,13 +81,21 @@ body {
   list-style: none;
   color: #955A00;
   text-decoration: none;
-  font-weight: bold
-  
- 
+  font-weight: bold;
+  border-radius: 17px;
+  padding: 1rem 3rem; 
+
+}
+.start:focus{
+  text-decoration: none;
+  color: #955A00;
+  font-size: 1.7rem;
+
 }
 .start :hover{
   text-decoration: none;
   color: #955A00;
+  font-size: 1.7rem;
 }
 
 
@@ -114,9 +127,10 @@ body {
 
 .grid .subgrid input[type="checkbox"]:checked::before {
   content: "x";
-  margin-bottom: 20px;
-  font-size: 60px;
+  margin-bottom: 0.5rem;
+  font-size: 3.5rem;
   color: #2988BE;
+  font-weight: bold;
 }
 
 
@@ -145,6 +159,12 @@ body {
   margin-top: 10%;
 }
 
+#all :hover{
+  text-decoration: none;
+  font-size: 1.7rem;
+
+
+}
 span{
   font-size: 1.5rem;
   color: #FFB74B;

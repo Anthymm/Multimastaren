@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 import StartTest from "../components/StartTest.vue";
 
 export default {
@@ -151,4 +151,4 @@ span{
   font-weight: bold;
   padding-bottom: 10%
 }
-</style>
+</style> -->
