@@ -1,5 +1,5 @@
 <script>
-import StartTest from "../components/StartTest.vue";
+import StartTest from "../components/startTest.vue";
 
 export default {
   components: {
@@ -32,7 +32,9 @@ export default {
         </div>
       </div>
       <div class="right">
-        <li><StartTest /></li>
+        <li>
+          <StartTest />
+        </li>
       </div>
     </div>
   </div>
@@ -40,8 +42,8 @@ export default {
 <style>
 body {
   background-color: #03273b;
-  font-family: jaldi;
 }
+
 .box {
   width: 750px;
   height: 500px;
@@ -51,6 +53,7 @@ body {
   display: block;
   margin-top: 100px;
 }
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -101,6 +104,7 @@ body {
   font-size: 14px;
   color: #666;
 }
+
 .left .buttons {
   margin-top: 20px;
 }
