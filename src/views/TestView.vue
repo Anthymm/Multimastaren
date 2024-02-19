@@ -29,9 +29,23 @@ export default {
             const table = [];
             for (let j = 1; j <= 10; j++) {
                 table.push({ question: `${i} x ${j} =`, answer: i * j });
+                this.randomize(table)
             }
             this.tables.push(table);
+            this.randomize(this.tables)
             }
+
+        },
+        randomize(values) {
+            let index = values.length;
+            let randomIndex;
+
+            while (index != 0) {
+                randomIndex = Math.floor(Math.random() * index);
+                index--;
+                [values[index], values[randomIndex]] = [values[randomIndex], values[index]];
+            }
+            return values;
         },
         onAnswer (){
             if (this.userAnswer === this.tables[this.randomNumber][this.randomNumber2].answer){
@@ -44,7 +58,9 @@ export default {
         nextQuestion(){
             this.userAnswer = null
             this.correctAnswer = null
-            if(this.randomNumber2 <= 8){
+            if(this.randomNumber === 4 && this.randomNumber2 === 9){
+                this.correctAnswer = 'Slut'
+            }else if(this.randomNumber2 <= 8){
                 this.randomNumber2++
             }else{
                 this.randomNumber++
@@ -59,10 +75,9 @@ export default {
 <template>
     <div>
         <HomeBtn/>
-        <h1 class="text">{{ this.tables[this.randomNumber][this.randomNumber2].question}} {{ this.tables[this.randomNumber][this.randomNumber2].answer}}</h1>
-        <input type="number" v-model="userAnswer" /> {{ userAnswer }} <input type="button" @click="onAnswer" value="Svara"/> <br/>
-        {{ correctAnswer }} <br/>
-        <input type="button" :disabled="nextBtnDisable" @click="nextQuestion" value="Nästa"/>
+        <h1 class="text">{{ this.tables[this.randomNumber][this.randomNumber2].question}}</h1>
+        <input type="number" v-model="userAnswer" /> {{ userAnswer }} <input type="button" @click="onAnswer" value="Svara"/><input type="button" :disabled="nextBtnDisable" @click="nextQuestion" value="Nästa"/> <br/>
+        {{ correctAnswer }}        
     </div>
 </template>
 
