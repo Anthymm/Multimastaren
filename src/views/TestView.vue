@@ -1,5 +1,5 @@
 <script>
-import { getTransitionRawChildren } from "vue";
+// import { getTransitionRawChildren } from "vue";
 import HomeBtn from "../components/HomeBtn.vue"
 export default {
     components: {
@@ -9,14 +9,10 @@ export default {
         this.generateTables();
         console.log(this.tables[0][0].question)
         console.log(this.tables[0][0].answer)
-        console.log(this.randomNumber, this.randomNumber2)
     },
     data() {
         return {
-            randomNumber: 0,
-            randomNumber2: 0,
-            // randomNumber: Math.floor(Math.random() * 10),
-            // randomNumber2: Math.floor(Math.random() * 10),
+            index: 0,
             tables: [],
             userAnswer: null,
             correctAnswer: null,
@@ -25,16 +21,22 @@ export default {
     },
     methods: {
         generateTables() {
-            for (let i = 1; i <= 5; i++) {
-            const table = [];
-            for (let j = 1; j <= 10; j++) {
-                table.push({ question: `${i} x ${j} =`, answer: i * j });
-                this.randomize(table)
+            // for (let i = 1; i <= 5; i++) {
+            // const table = [];
+            // for (let j = 1; j <= 10; j++) {
+            //     table.push({ question: `${i} x ${j} =`, answer: i * j });
+            //     this.randomize(table)
+            // }
+            // this.tables.push(table);
+            // this.randomize(this.tables)
+            // }
+            const allQuestions = []
+            for(let i=1; i<=5; i++){
+                for(let j=1; j<=2; j++){
+                    allQuestions.push({question: `${i} x ${j} =`, answer: i*j})
+                }
             }
-            this.tables.push(table);
-            this.randomize(this.tables)
-            }
-
+            this.tables.push(this.randomize(allQuestions))
         },
         randomize(values) {
             let index = values.length;
@@ -48,23 +50,21 @@ export default {
             return values;
         },
         onAnswer (){
-            if (this.userAnswer === this.tables[this.randomNumber][this.randomNumber2].answer){
+            if (this.userAnswer === this.tables[0][this.index].answer){
                 this.correctAnswer = 'Rätt!'
             }else{
-                this.correctAnswer = `Fel, rätt svar är: ${this.tables[this.randomNumber][this.randomNumber2].answer}`
+                this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
             }
             this.nextBtnDisable = false
         },
         nextQuestion(){
             this.userAnswer = null
             this.correctAnswer = null
-            if(this.randomNumber === 4 && this.randomNumber2 === 9){
-                this.correctAnswer = 'Slut'
-            }else if(this.randomNumber2 <= 8){
-                this.randomNumber2++
-            }else{
-                this.randomNumber++
-                this.randomNumber2 = 0
+            if (this.index === this.tables[0].length - 1) {
+                this.correctAnswer = 'Done';
+            } else if (this.index < this.tables[0].length - 1) {
+                this.index++;
+                this.correctAnswer = ''
             }
             this.nextBtnDisable = true
         }
@@ -75,9 +75,9 @@ export default {
 <template>
     <div>
         <HomeBtn/>
-        <h1 class="text">{{ this.tables[this.randomNumber][this.randomNumber2].question}}</h1>
-        <input type="number" v-model="userAnswer" /> {{ userAnswer }} <input type="button" @click="onAnswer" value="Svara"/><input type="button" :disabled="nextBtnDisable" @click="nextQuestion" value="Nästa"/> <br/>
-        {{ correctAnswer }}        
+        <h1 class="text">{{ this.tables[0][this.index].question}}</h1>
+        <input type="number" v-model="userAnswer" /> <input type="button" @click="onAnswer" value="Svara"/><input type="button" :disabled="nextBtnDisable" @click="nextQuestion" value="Nästa"/> <br/>
+        {{ correctAnswer }}     
     </div>
 </template>
 
