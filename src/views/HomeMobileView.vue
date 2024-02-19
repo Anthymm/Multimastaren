@@ -140,7 +140,7 @@ body {
 
 span{
   font-size: 1.5rem;
-  color: #00a31e;
+  color: #a36200;
   font-weight: bold;
   margin: auto;
 }
