@@ -10,7 +10,7 @@ export default {
 <template>
   <div class="box">
     <div class="container">
-      <div class="grid">
+      <div class="left">
         <h2 id="tabell">Välj tabeller:</h2>
         <div class="subgrid">
           <div>
@@ -31,7 +31,7 @@ export default {
           </div>
         </div>
       </div>
-      <div class="start">
+      <div class="right">
         <li><StartTest /></li>
       </div>
     </div>
@@ -54,12 +54,13 @@ body {
   margin-top: 100px;
 }
 .container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
 }
 
-.grid {
+.left {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -67,58 +68,50 @@ body {
   align-items: center;
 }
 
-.start {
+.right {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  list-style: none;
-  color: #955A00;
-  text-decoration: none;
-  font-weight: bold
-  
- 
-}
-.start :hover{
-  text-decoration: none;
-  color: #955A00;
 }
 
-
-
-
-.grid .subgrid {
+.left .subgrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.grid .subgrid label {
+.left .subgrid label {
   display: flex;
   align-items: center;
 }
 
-.grid .subgrid input[type="checkbox"] {
+.left .subgrid input[type="checkbox"] {
   margin-right: 5px;
   appearance: none;
   width: 20px;
   height: 20px;
-  
-  border: 10px solid #BCD7E7;
+  border: 2px solid #666;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.grid .subgrid input[type="checkbox"]:checked::before {
+.left .subgrid input[type="checkbox"]:checked::before {
   content: "x";
-  margin-bottom: 20px;
-  font-size: 60px;
-  color: #2988BE;
+  font-size: 14px;
+  color: #666;
+}
+.left .buttons {
+  margin-top: 20px;
 }
 
+.left .buttons button {
+  display: block;
+  margin-bottom: 5px;
+}
 
 #remove {
   background-color: #BCD7E7;
@@ -147,7 +140,7 @@ body {
 
 span{
   font-size: 1.5rem;
-  color: #FFB74B;
+  color: #00a31e;
   font-weight: bold;
   margin: auto;
 }
