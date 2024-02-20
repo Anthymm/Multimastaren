@@ -5,27 +5,23 @@ export default {
   components: {
     StartTest,
   },
-  data(){
-    return{
+  data() {
+    return {
       selectedTables: []
     }
   },
-  methods:{
-    clearBoxes(){
+  methods: {
+    clearBoxes() {
       this.selectedTables = []
     },
-    selectAllBoxes(){
-      this.selectedTables = [1,2,3,4,5,6,7,8,9,10]
+    selectAllBoxes() {
+      this.selectedTables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
-    emitValues(){
-      this.$emit("sendValue",this.selectedTables)
+    sendValues() {
+      localStorage.setItem("chosenTables", JSON.stringify(this.selectedTables));
+      // this.$emit("sendValue",this.selectedTables)
     }
   },
-  watch:{
-    selectedTables(){
-      console.log(this.selectedTables)
-    }
-  }
 };
 </script>
 <template>
@@ -57,7 +53,7 @@ export default {
           <label><input type="checkbox" /> <span>Tid</span></label>
           <label><input type="checkbox" /> <span>Ingen Tid</span></label>
         </div>
-        <StartTest @click="emitValues"/>
+        <StartTest @click="sendValues" />
       </div>
     </div>
   </div>

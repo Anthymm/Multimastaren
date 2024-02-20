@@ -1,22 +1,12 @@
 <script>
 // import { getTransitionRawChildren } from "vue";
 import HomeBtn from "../components/HomeBtn.vue"
-import sendValue from "./HomeView.vue"
 export default {
     components: {
-        HomeBtn,
-        sendValue
-    },
-    props:{
-        sendValue:{
-            type: Array,
-            required:true
-        }
+        HomeBtn
     },
     created() {
         this.generateTables();
-        console.log(this.tables[0][0].question)
-        console.log(this.tables[0][0].answer)
     },
     data() {
         return {
@@ -32,22 +22,17 @@ export default {
     },
     methods: {
         generateTables() {
-            // for (let i = 1; i <= 5; i++) {
-            // const table = [];
-            // for (let j = 1; j <= 10; j++) {
-            //     table.push({ question: `${i} x ${j} =`, answer: i * j });
-            //     this.randomize(table)
-            // }
-            // this.tables.push(table);
-            // this.randomize(this.tables)
-            // }
             const allQuestions = []
-            for (let i = 1; i <= 2; i++) {
-                for (let j = 1; j <= 2; j++) {
-                    allQuestions.push({ question: `${i} x ${j} =`, answer: i * j })
+
+            let chosenTables = JSON.parse(localStorage.getItem("chosenTables"))
+
+            chosenTables.forEach(element => {
+                for (let j = 1; j <= 10; j++) {
+                    allQuestions.push({ question: `${element} x ${j} =`, answer: element * j })
                 }
-            }
+            });
             this.tables.push(this.randomize(allQuestions))
+
         },
         randomize(values) {
             let index = values.length;
@@ -57,6 +42,9 @@ export default {
                 randomIndex = Math.floor(Math.random() * index);
                 index--;
                 [values[index], values[randomIndex]] = [values[randomIndex], values[index]];
+            }
+            while (values.length > 20) {
+                values.pop()
             }
             return values;
         },
