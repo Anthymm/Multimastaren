@@ -8,12 +8,11 @@ export default {};
 a {
   color: #955a00;
   font-size: 1.5rem;
-  text-decoration: none;
+  text-decoration: none !important;
   background-color: #bcd7e7;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   text-align: center;
   border-radius: 17px;
-  box-shadow: #000000 3px 3px 6px 1px;
 }
 a:focus {
   text-decoration: none;
