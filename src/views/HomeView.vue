@@ -5,6 +5,27 @@ export default {
   components: {
     StartTest,
   },
+  data(){
+    return{
+      selectedTables: []
+    }
+  },
+  methods:{
+    clearBoxes(){
+      this.selectedTables = []
+    },
+    selectAllBoxes(){
+      this.selectedTables = [1,2,3,4,5,6,7,8,9,10]
+    },
+    emitValues(){
+      this.$emit("sendValue",this.selectedTables)
+    }
+  },
+  watch:{
+    selectedTables(){
+      console.log(this.selectedTables)
+    }
+  }
 };
 </script>
 <template>
@@ -14,20 +35,20 @@ export default {
         <h2 id="tabell">Välj tabeller:</h2>
         <div class="subgrid">
           <div>
-            <label><input type="checkbox" /><span>1</span> </label>
-            <label><input type="checkbox" /> <span>2</span></label>
-            <label><input type="checkbox" /> <span>3</span></label>
-            <label><input type="checkbox" /> <span>4</span></label>
-            <label><input type="checkbox" /> <span>5</span></label>
-            <button id="remove">Rensa</button>
+            <label><input type="checkbox" value=1 v-model="selectedTables" /><span>1</span> </label>
+            <label><input type="checkbox" value=2 v-model="selectedTables" /> <span>2</span></label>
+            <label><input type="checkbox" value=3 v-model="selectedTables" /> <span>3</span></label>
+            <label><input type="checkbox" value=4 v-model="selectedTables" /> <span>4</span></label>
+            <label><input type="checkbox" value=5 v-model="selectedTables" /> <span>5</span></label>
+            <button id="remove" @click="clearBoxes">Rensa</button>
           </div>
           <div>
-            <label><input type="checkbox" /> <span>6</span></label>
-            <label><input type="checkbox" /> <span>7</span></label>
-            <label><input type="checkbox" /> <span>8</span></label>
-            <label><input type="checkbox" /> <span>9</span></label>
-            <label><input type="checkbox" /> <span>10</span></label>
-            <button id="all">Alla</button>
+            <label><input type="checkbox" value=6 v-model="selectedTables" /> <span>6</span></label>
+            <label><input type="checkbox" value=7 v-model="selectedTables" /> <span>7</span></label>
+            <label><input type="checkbox" value=8 v-model="selectedTables" /> <span>8</span></label>
+            <label><input type="checkbox" value=9 v-model="selectedTables" /> <span>9</span></label>
+            <label><input type="checkbox" value=10 v-model="selectedTables" /> <span>10</span></label>
+            <button id="selectAll" @click="selectAllBoxes">Alla</button>
           </div>
         </div>
       </div>
@@ -36,7 +57,7 @@ export default {
           <label><input type="checkbox" /> <span>Tid</span></label>
           <label><input type="checkbox" /> <span>Ingen Tid</span></label>
         </div>
-        <StartTest />
+        <StartTest @click="emitValues"/>
       </div>
     </div>
   </div>
@@ -90,25 +111,13 @@ body {
   margin-bottom: 10%;
 }
 
-.start:focus {
-  text-decoration: none;
-  color: #955a00;
-  font-size: 1.7rem;
-}
-
-.start :hover {
-  text-decoration: none;
-  color: #955a00;
-  font-size: 1.7rem;
-}
-
 /*.start label:hover {
   color: inherit;
   font-size: inherit;
 }*/
 
 .start input[type="checkbox"] {
-  appearance: none;
+
   width: 20px;
   height: 20px;
   border: 10px solid #bcd7e7;
@@ -123,18 +132,6 @@ body {
   display: flex;
   align-items: center;
   margin-right: 20px;
-}
-
-.start input[type="checkbox"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 10px solid #bcd7e7;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5px;
 }
 
 .start input[type="checkbox"]:checked::before {
@@ -158,7 +155,6 @@ body {
 
 .grid .subgrid input[type="checkbox"] {
   margin-right: 5px;
-  appearance: none;
   width: 20px;
   height: 20px;
   border: 10px solid #bcd7e7;
@@ -169,15 +165,14 @@ body {
 }
 
 .grid .subgrid input[type="checkbox"]:checked::before {
-  content: "x";
   margin-bottom: 0.5rem;
-  font-size: 3.5rem;
+  font-size: 40px;
   color: #2988be;
   font-weight: bold;
 }
 
 #remove,
-#all {
+#selectAll {
   background-color: #bcd7e7;
   color: #955a00;
   font-weight: bold;
@@ -190,10 +185,7 @@ body {
   margin-top: 10%;
 }
 
-#all :hover {
-  text-decoration: none;
-  font-size: 1.7rem;
-}
+
 
 span {
   font-size: 1.5rem;

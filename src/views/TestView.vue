@@ -1,9 +1,17 @@
 <script>
 // import { getTransitionRawChildren } from "vue";
 import HomeBtn from "../components/HomeBtn.vue"
+import sendValue from "./HomeView.vue"
 export default {
     components: {
-        HomeBtn
+        HomeBtn,
+        sendValue
+    },
+    props:{
+        sendValue:{
+            type: Array,
+            required:true
+        }
     },
     created() {
         this.generateTables();
