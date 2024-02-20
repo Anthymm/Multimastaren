@@ -16,7 +16,10 @@ export default {
             tables: [],
             userAnswer: null,
             correctAnswer: null,
-            nextBtnDisable: true
+            switchBtn: true,
+            btnText: "Svara",
+            btnDisabled: true,
+            inputDisabled: false,
         };
     },
     methods: {
@@ -31,9 +34,9 @@ export default {
             // this.randomize(this.tables)
             // }
             const allQuestions = []
-            for(let i=1; i<=5; i++){
-                for(let j=1; j<=2; j++){
-                    allQuestions.push({question: `${i} x ${j} =`, answer: i*j})
+            for (let i = 1; i <= 2; i++) {
+                for (let j = 1; j <= 2; j++) {
+                    allQuestions.push({ question: `${i} x ${j} =`, answer: i * j })
                 }
             }
             this.tables.push(this.randomize(allQuestions))
@@ -49,37 +52,75 @@ export default {
             }
             return values;
         },
-        onAnswer (){
-            if (this.userAnswer === this.tables[0][this.index].answer){
+        onAnswer() {
+            if (this.userAnswer === this.tables[0][this.index].answer) {
                 this.correctAnswer = 'Rätt!'
-            }else{
+                this.inputDisabled = true
+                this.btnText = "Nästa"
+            } else {
                 this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
+                this.inputDisabled = true
+                this.btnText = "Nästa"
             }
-            this.nextBtnDisable = false
+
+            if (this.index === this.tables[0].length - 1) {
+                this.btnText = "Done"
+                this.inputDisabled = true
+                this.btnDisabled = true
+            }
+            this.switchBtn = false
         },
-        nextQuestion(){
+        nextQuestion() {
             this.userAnswer = null
             this.correctAnswer = null
-            if (this.index === this.tables[0].length - 1) {
-                this.correctAnswer = 'Done';
-            } else if (this.index < this.tables[0].length - 1) {
+            // if (this.index === this.tables[0].length - 1) {
+            //     this.correctAnswer = 'Done';
+            //     this.inputDisabled = true
+            //     this.btnDisabled = true
+            // } else
+            if (this.index < this.tables[0].length - 1) {
                 this.index++;
                 this.correctAnswer = ''
+                this.inputDisabled = false
             }
-            this.nextBtnDisable = true
-        }
+            this.switchBtn = true
+            this.btnText = "Svara"
+        },
+
     },
+    watch: {
+        userAnswer() {
+            if (this.userAnswer >= 1) {
+                this.btnDisabled = false
+            } else {
+                this.btnDisabled = true
+            }
+        },
+
+    }
 };
 </script>
 
 <template>
-    <div>
-        <HomeBtn/>
-        <h1 class="text">{{ this.tables[0][this.index].question}}</h1>
-        <input type="number" v-model="userAnswer" /> <input type="button" @click="onAnswer" value="Svara"/><input type="button" :disabled="nextBtnDisable" @click="nextQuestion" value="Nästa"/> <br/>
-        {{ correctAnswer }}     
+    <div id="questionBox">
+        <HomeBtn />
+        <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
+        <input type="number" v-model="userAnswer" min="0" :disabled="inputDisabled" />
+        <div id="btns">
+            <input type="button" @click="switchBtn ? onAnswer() : nextQuestion()" :value="btnText"
+                :disabled="btnDisabled" />
+        </div>
+
+        {{ correctAnswer }}
     </div>
 </template>
 
 <style>
+#questionBox {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 </style>
