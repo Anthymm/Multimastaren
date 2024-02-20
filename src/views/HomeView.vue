@@ -32,9 +32,10 @@ export default {
         </div>
       </div>
       <div class="start">
-        <label><input type="checkbox" /> <span>Tid</span></label>
-        <label><input type="checkbox" /> <span>Ingen Tid</span></label>
-
+        <div class="start-checkbox">
+          <label><input type="checkbox" /> <span>Tid</span></label>
+          <label><input type="checkbox" /> <span>Ingen Tid</span></label>
+        </div>
         <StartTest />
       </div>
     </div>
@@ -85,8 +86,8 @@ body {
   padding: 1rem 3rem;
 }
 
-.start {
-  display: flex;
+.start-checkbox {
+  margin-bottom: 10%;
 }
 
 .start:focus {
@@ -94,16 +95,17 @@ body {
   color: #955a00;
   font-size: 1.7rem;
 }
+
 .start :hover {
   text-decoration: none;
   color: #955a00;
   font-size: 1.7rem;
 }
 
-.start label:hover {
-  color: inherit; /* Inherit the color from the parent */
-  font-size: inherit; /* Inherit the font size from the parent */
-}
+/*.start label:hover {
+  color: inherit;
+  font-size: inherit;
+}*/
 
 .start input[type="checkbox"] {
   appearance: none;
@@ -174,7 +176,8 @@ body {
   font-weight: bold;
 }
 
-#remove {
+#remove,
+#all {
   background-color: #bcd7e7;
   color: #955a00;
   font-weight: bold;
@@ -184,18 +187,6 @@ body {
   cursor: pointer;
   margin-right: 20%;
   padding-right: 10px;
-  margin-top: 10%;
-}
-
-#all {
-  background-color: #bcd7e7;
-  color: #955a00;
-  font-weight: bold;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 20%;
   margin-top: 10%;
 }
 
