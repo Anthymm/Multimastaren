@@ -2,7 +2,7 @@
 export default {};
 </script>
 <template>
-  <RouterLink to="/test">Start</RouterLink>
+  <RouterLink to="/test">Starta Test!</RouterLink>
 </template>
 <style>
 a {

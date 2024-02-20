@@ -18,6 +18,7 @@ export default {
             btnText: "Svara",
             btnDisabled: true,
             inputDisabled: false,
+            pColor: "#000"
         };
     },
     methods: {
@@ -53,10 +54,12 @@ export default {
                 this.correctAnswer = 'Rätt!'
                 this.inputDisabled = true
                 this.btnText = "Nästa"
+                this.pColor = "limegreen"
             } else {
                 this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
                 this.inputDisabled = true
                 this.btnText = "Nästa"
+                this.pColor = "red"
             }
 
             if (this.index === this.tables[0].length - 1) {
@@ -102,12 +105,17 @@ export default {
             <input id="userAnswer" type="number" v-model="userAnswer" min="0" max="999" :disabled="inputDisabled" />
             <input type="button" id="btnAnswer" @click="switchBtn ? onAnswer() : nextQuestion()" :value="btnText"
                 :disabled="btnDisabled" />
-            {{ correctAnswer }}
+            <p>{{ correctAnswer }}</p>
         </div>
     </div>
 </template>
 
 <style>
+p {
+    font-size: 3vh;
+    color: v-bind('pColor');
+}
+
 #userAnswer {
     text-align: center;
     width: 10vh;

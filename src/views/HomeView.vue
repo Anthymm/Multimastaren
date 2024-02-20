@@ -53,7 +53,7 @@ export default {
           <label><input type="checkbox" /> <span>Tid</span></label>
           <label><input type="checkbox" /> <span>Ingen Tid</span></label>
         </div>
-        <StartTest @click="sendValues" />
+        <StartTest @click="sendValues" v-if="this.selectedTables.length > 0" />
       </div>
     </div>
   </div>
