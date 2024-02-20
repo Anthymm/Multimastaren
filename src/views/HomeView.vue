@@ -8,9 +8,6 @@ export default {
 };
 </script>
 <template>
-  
-    
- 
   <div class="box">
     <div class="container">
       <div class="grid">
@@ -35,11 +32,13 @@ export default {
         </div>
       </div>
       <div class="start">
-        <li><StartTest /></li>
+        <label><input type="checkbox" /> <span>Tid</span></label>
+        <label><input type="checkbox" /> <span>Ingen Tid</span></label>
+
+        <StartTest />
       </div>
     </div>
   </div>
-
 </template>
 <style>
 body {
@@ -47,21 +46,22 @@ body {
   font-family: jaldi;
 }
 
-
 .box {
   width: 750px;
   height: 500px;
   background-color: #2988be;
   border-radius: 10px;
   margin: auto;
-  display: block;
-  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* .container {
+
+.container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-} */
+}
 
 .grid {
   padding: 20px;
@@ -72,34 +72,76 @@ body {
 }
 
 .start {
-
-   padding: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   list-style: none;
-  color: #955A00;
+  color: #955a00;
   text-decoration: none;
   font-weight: bold;
   border-radius: 17px;
-  padding: 1rem 3rem; 
-
+  padding: 1rem 3rem;
 }
-.start:focus{
-  text-decoration: none;
-  color: #955A00;
-  font-size: 1.7rem;
 
+.start {
+  display: flex;
 }
-.start :hover{
+
+.start:focus {
   text-decoration: none;
-  color: #955A00;
+  color: #955a00;
   font-size: 1.7rem;
 }
+.start :hover {
+  text-decoration: none;
+  color: #955a00;
+  font-size: 1.7rem;
+}
 
+.start label:hover {
+  color: inherit; /* Inherit the color from the parent */
+  font-size: inherit; /* Inherit the font size from the parent */
+}
 
+.start input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 10px solid #bcd7e7;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
 
+.start label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.start input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 10px solid #bcd7e7;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.start input[type="checkbox"]:checked::before {
+  content: "x";
+  margin-bottom: 0.5rem;
+  font-size: 3.5rem;
+  color: #2988be;
+  font-weight: bold;
+}
 
 .grid .subgrid {
   display: grid;
@@ -117,8 +159,7 @@ body {
   appearance: none;
   width: 20px;
   height: 20px;
-  
-  border: 10px solid #BCD7E7;
+  border: 10px solid #bcd7e7;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -129,14 +170,13 @@ body {
   content: "x";
   margin-bottom: 0.5rem;
   font-size: 3.5rem;
-  color: #2988BE;
+  color: #2988be;
   font-weight: bold;
 }
 
-
 #remove {
-  background-color: #BCD7E7;
-  color: #955A00;
+  background-color: #bcd7e7;
+  color: #955a00;
   font-weight: bold;
   border: none;
   padding: 5px 10px;
@@ -148,8 +188,8 @@ body {
 }
 
 #all {
-  background-color: #BCD7E7;
-  color: #955A00;
+  background-color: #bcd7e7;
+  color: #955a00;
   font-weight: bold;
   border: none;
   padding: 5px 10px;
@@ -159,23 +199,21 @@ body {
   margin-top: 10%;
 }
 
-#all :hover{
+#all :hover {
   text-decoration: none;
   font-size: 1.7rem;
-
-
 }
-span{
+span {
   font-size: 1.5rem;
-  color: #FFB74B;
+  color: #ffb74b;
   font-weight: bold;
   margin: auto;
 }
 
-#tabell{
-  color: #FFB74B;
+#tabell {
+  color: #ffb74b;
   font-size: 2rem;
   font-weight: bold;
-  padding-bottom: 10%
+  padding-bottom: 10%;
 }
 </style>
