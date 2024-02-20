@@ -8,7 +8,7 @@ export default {};
 a {
   color: #955a00;
   font-size: 1.5rem;
-  text-decoration: none;
+  text-decoration: none !important;
   background-color: #bcd7e7;
   padding: 0.5rem 2rem;
   text-align: center;
