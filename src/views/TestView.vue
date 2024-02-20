@@ -102,25 +102,27 @@ export default {
 </script>
 
 <template>
-    <div id="questionBox">
-        <HomeBtn />
-        <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
-        <input type="number" v-model="userAnswer" min="0" :disabled="inputDisabled" />
-        <div id="btns">
-            <input type="button" @click="switchBtn ? onAnswer() : nextQuestion()" :value="btnText"
-                :disabled="btnDisabled" />
-        </div>
+    <div class="box">
+        <div id="questionBox">
+            <HomeBtn />
+            <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
+            <input type="number" v-model="userAnswer" min="0" :disabled="inputDisabled" />
+            <div id="btns">
+                <input type="button" @click="switchBtn ? onAnswer() : nextQuestion()" :value="btnText"
+                    :disabled="btnDisabled" />
+            </div>
 
-        {{ correctAnswer }}
+            {{ correctAnswer }}
+        </div>
     </div>
 </template>
 
 <style>
 #questionBox {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #2988BE;
 }
 </style>

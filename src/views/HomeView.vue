@@ -194,6 +194,7 @@ body {
   text-decoration: none;
   font-size: 1.7rem;
 }
+
 span {
   font-size: 1.5rem;
   color: #ffb74b;
