@@ -8,10 +8,13 @@ export default {
     <RouterLink to="/"><i class="bi bi-house-door-fill"></i></RouterLink>
 </template>
 <style>
+a {
+    background-color: #BCD7E7;
+}
+
 i {
     color: #000;
     font-size: 2rem;
-    background-color: #BCD7E7;
     border-radius: 17px;
 }
 </style>

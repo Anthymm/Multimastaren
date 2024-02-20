@@ -69,11 +69,6 @@ export default {
         nextQuestion() {
             this.userAnswer = null
             this.correctAnswer = null
-            // if (this.index === this.tables[0].length - 1) {
-            //     this.correctAnswer = 'Done';
-            //     this.inputDisabled = true
-            //     this.btnDisabled = true
-            // } else
             if (this.index < this.tables[0].length - 1) {
                 this.index++;
                 this.correctAnswer = ''
@@ -86,7 +81,7 @@ export default {
     },
     watch: {
         userAnswer() {
-            if (this.userAnswer >= 1) {
+            if (this.userAnswer >= 1 && this.userAnswer <= 100) {
                 this.btnDisabled = false
             } else {
                 this.btnDisabled = true
@@ -99,10 +94,12 @@ export default {
 
 <template>
     <div class="bgBoxTest">
-        <HomeBtn />
+        <div id="homeBtnBox">
+            <HomeBtn />
+        </div>
         <div id="questionBox">
             <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
-            <input type="number" v-model="userAnswer" min="0" :disabled="inputDisabled" />
+            <input id="userAnswer" type="number" v-model="userAnswer" min="0" max="999" :disabled="inputDisabled" />
             <input type="button" id="btnAnswer" @click="switchBtn ? onAnswer() : nextQuestion()" :value="btnText"
                 :disabled="btnDisabled" />
             {{ correctAnswer }}
@@ -111,6 +108,16 @@ export default {
 </template>
 
 <style>
+#userAnswer {
+    text-align: center;
+    width: 10vh;
+    font-size: 4vh;
+}
+
+#homeBtnBox {
+    padding: 5vh;
+}
+
 #btnAnswer {
     margin-top: 3vh;
     font-size: 1.5rem;
@@ -127,11 +134,22 @@ export default {
 }
 
 #questionBox {
-    margin-top: 15%;
+    margin: auto;
+    margin-top: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #2988BE;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 </style>
