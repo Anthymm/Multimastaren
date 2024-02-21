@@ -134,7 +134,11 @@ body {
 }
 
 .start input[type="checkbox"]:checked:after {
+  font-family:Arial, Helvetica, sans-serif;
   content: "X";
+  font-size: 33px;
+  font-weight: bolder;
+  margin-top: 2px;
   color: #2988be;
 }
 .grid .subgrid {
@@ -167,8 +171,9 @@ body {
 .grid .subgrid input[type="checkbox"]:checked::after {
  font-family:Arial, Helvetica, sans-serif;
   content: "X";
- font-size: 30px;
+ font-size: 33px;
  font-weight: bolder;
+ margin-top: 3px;
   color: #2988be;
 }
 
