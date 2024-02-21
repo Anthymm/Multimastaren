@@ -112,8 +112,11 @@ body {
   font-size: inherit;
 }*/
 
-.start input[type="checkbox"] {
 
+
+.start input[type="checkbox"] {
+  -webkit-appearance: initial;
+  appearance: initial;
   width: 20px;
   height: 20px;
   border: 10px solid #bcd7e7;
@@ -130,14 +133,10 @@ body {
   margin-right: 20px;
 }
 
-.start input[type="checkbox"]:checked::before {
-  content: "x";
-  margin-bottom: 0.5rem;
-  font-size: 3.5rem;
+.start input[type="checkbox"]:checked:after {
+  content: "X";
   color: #2988be;
-  font-weight: bold;
 }
-
 .grid .subgrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -145,26 +144,32 @@ body {
 }
 
 .grid .subgrid label {
+  -webkit-appearance: initial;
+  appearance: initial;
   display: flex;
   align-items: center;
 }
 
 .grid .subgrid input[type="checkbox"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: initial;
+  appearance: initial;
   margin-right: 5px;
   width: 20px;
   height: 20px;
   border: 10px solid #bcd7e7;
   border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
-.grid .subgrid input[type="checkbox"]:checked::before {
-  margin-bottom: 0.5rem;
-  font-size: 40px;
+.grid .subgrid input[type="checkbox"]:checked::after {
+ font-family:Arial, Helvetica, sans-serif;
+  content: "X";
+ font-size: 30px;
+ font-weight: bolder;
   color: #2988be;
-  font-weight: bold;
 }
 
 #remove,
@@ -187,7 +192,7 @@ span {
   font-size: 1.5rem;
   color: #ffb74b;
   font-weight: bold;
-  margin: auto;
+  margin: 0;
 }
 
 #tabell {
