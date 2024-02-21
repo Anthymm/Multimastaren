@@ -7,20 +7,20 @@ export default {
   },
   data() {
     return {
-      selectedTables: []
-    }
+      selectedTables: [],
+    };
   },
   methods: {
     clearBoxes() {
-      this.selectedTables = []
+      this.selectedTables = [];
     },
     selectAllBoxes() {
-      this.selectedTables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      this.selectedTables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     },
     sendValues() {
       localStorage.setItem("chosenTables", JSON.stringify(this.selectedTables));
       // this.$emit("sendValue",this.selectedTables)
-    }
+    },
   },
 };
 </script>
@@ -31,19 +31,50 @@ export default {
         <h2 id="tabell">Välj tabeller:</h2>
         <div class="subgrid">
           <div>
-            <label><input type="checkbox" value=1 v-model="selectedTables" /><span>1</span> </label>
-            <label><input type="checkbox" value=2 v-model="selectedTables" /> <span>2</span></label>
-            <label><input type="checkbox" value=3 v-model="selectedTables" /> <span>3</span></label>
-            <label><input type="checkbox" value=4 v-model="selectedTables" /> <span>4</span></label>
-            <label><input type="checkbox" value=5 v-model="selectedTables" /> <span>5</span></label>
+            <label
+              ><input type="checkbox" value="1" v-model="selectedTables" /><span
+                >1</span
+              >
+            </label>
+            <label
+              ><input type="checkbox" value="2" v-model="selectedTables" />
+              <span>2</span></label
+            >
+            <label
+              ><input type="checkbox" value="3" v-model="selectedTables" />
+              <span>3</span></label
+            >
+            <label
+              ><input type="checkbox" value="4" v-model="selectedTables" />
+              <span>4</span></label
+            >
+            <label
+              ><input type="checkbox" value="5" v-model="selectedTables" />
+              <span>5</span></label
+            >
             <button id="remove" @click="clearBoxes">Rensa</button>
           </div>
           <div>
-            <label><input type="checkbox" value=6 v-model="selectedTables" /> <span>6</span></label>
-            <label><input type="checkbox" value=7 v-model="selectedTables" /> <span>7</span></label>
-            <label><input type="checkbox" value=8 v-model="selectedTables" /> <span>8</span></label>
-            <label><input type="checkbox" value=9 v-model="selectedTables" /> <span>9</span></label>
-            <label><input type="checkbox" value=10 v-model="selectedTables" /> <span>10</span></label>
+            <label
+              ><input type="checkbox" value="6" v-model="selectedTables" />
+              <span>6</span></label
+            >
+            <label
+              ><input type="checkbox" value="7" v-model="selectedTables" />
+              <span>7</span></label
+            >
+            <label
+              ><input type="checkbox" value="8" v-model="selectedTables" />
+              <span>8</span></label
+            >
+            <label
+              ><input type="checkbox" value="9" v-model="selectedTables" />
+              <span>9</span></label
+            >
+            <label
+              ><input type="checkbox" value="10" v-model="selectedTables" />
+              <span>10</span></label
+            >
             <button id="selectAll" @click="selectAllBoxes">Alla</button>
           </div>
         </div>
@@ -60,7 +91,6 @@ export default {
 </template>
 <style>
 body {
-  /* background-color: #03273b; */
   font-family: jaldi;
 }
 
@@ -107,13 +137,6 @@ body {
   margin-bottom: 10%;
 }
 
-/*.start label:hover {
-  color: inherit;
-  font-size: inherit;
-}*/
-
-
-
 .start input[type="checkbox"] {
   -webkit-appearance: initial;
   appearance: initial;
@@ -134,7 +157,7 @@ body {
 }
 
 .start input[type="checkbox"]:checked:after {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   content: "X";
   font-size: 33px;
   font-weight: bolder;
@@ -165,15 +188,14 @@ body {
   height: 20px;
   border: 10px solid #bcd7e7;
   border-radius: 4px;
-
 }
 
 .grid .subgrid input[type="checkbox"]:checked::after {
- font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   content: "X";
- font-size: 33px;
- font-weight: bolder;
- margin-top: 3px;
+  font-size: 33px;
+  font-weight: bolder;
+  margin-top: 3px;
   color: #2988be;
 }
 
@@ -191,8 +213,6 @@ body {
   margin-top: 10%;
 }
 
-
-
 span {
   font-size: 1.5rem;
   color: #ffb74b;
@@ -205,5 +225,20 @@ span {
   font-size: 2rem;
   font-weight: bold;
   padding-bottom: 10%;
+}
+
+@media (max-width: 600px) {
+  .box {
+    width: 300px;
+    height: 700px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .start {
+    margin-top: 5px;
+  }
 }
 </style>
