@@ -160,4 +160,15 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+@media (max-width: 600px) {
+    .bgBoxTest {
+        width: 300px;
+        height: 80vh;
+    }
+
+    #questionBox {
+        margin-top: 30%;
+    }
+}
 </style>

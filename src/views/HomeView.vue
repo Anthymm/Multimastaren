@@ -31,50 +31,29 @@ export default {
         <h2 id="tabell">Välj tabeller:</h2>
         <div class="subgrid">
           <div>
-            <label
-              ><input type="checkbox" value="1" v-model="selectedTables" /><span
-                >1</span
-              >
+            <label><input type="checkbox" value="1" v-model="selectedTables" /><span>1</span>
             </label>
-            <label
-              ><input type="checkbox" value="2" v-model="selectedTables" />
-              <span>2</span></label
-            >
-            <label
-              ><input type="checkbox" value="3" v-model="selectedTables" />
-              <span>3</span></label
-            >
-            <label
-              ><input type="checkbox" value="4" v-model="selectedTables" />
-              <span>4</span></label
-            >
-            <label
-              ><input type="checkbox" value="5" v-model="selectedTables" />
-              <span>5</span></label
-            >
+            <label><input type="checkbox" value="2" v-model="selectedTables" />
+              <span>2</span></label>
+            <label><input type="checkbox" value="3" v-model="selectedTables" />
+              <span>3</span></label>
+            <label><input type="checkbox" value="4" v-model="selectedTables" />
+              <span>4</span></label>
+            <label><input type="checkbox" value="5" v-model="selectedTables" />
+              <span>5</span></label>
             <button id="remove" @click="clearBoxes">Rensa</button>
           </div>
           <div>
-            <label
-              ><input type="checkbox" value="6" v-model="selectedTables" />
-              <span>6</span></label
-            >
-            <label
-              ><input type="checkbox" value="7" v-model="selectedTables" />
-              <span>7</span></label
-            >
-            <label
-              ><input type="checkbox" value="8" v-model="selectedTables" />
-              <span>8</span></label
-            >
-            <label
-              ><input type="checkbox" value="9" v-model="selectedTables" />
-              <span>9</span></label
-            >
-            <label
-              ><input type="checkbox" value="10" v-model="selectedTables" />
-              <span>10</span></label
-            >
+            <label><input type="checkbox" value="6" v-model="selectedTables" />
+              <span>6</span></label>
+            <label><input type="checkbox" value="7" v-model="selectedTables" />
+              <span>7</span></label>
+            <label><input type="checkbox" value="8" v-model="selectedTables" />
+              <span>8</span></label>
+            <label><input type="checkbox" value="9" v-model="selectedTables" />
+              <span>9</span></label>
+            <label><input type="checkbox" value="10" v-model="selectedTables" />
+              <span>10</span></label>
             <button id="selectAll" @click="selectAllBoxes">Alla</button>
           </div>
         </div>
@@ -164,6 +143,7 @@ body {
   margin-top: 2px;
   color: #2988be;
 }
+
 .grid .subgrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -235,10 +215,15 @@ span {
 
   .container {
     grid-template-columns: 1fr;
+    height: 700px;
   }
 
   .start {
     margin-top: 5px;
+  }
+
+  .grid {
+    padding-bottom: 0;
   }
 }
 </style>
