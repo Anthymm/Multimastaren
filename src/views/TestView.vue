@@ -161,7 +161,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .bgBoxTest {
         width: 300px;
         height: 80vh;
