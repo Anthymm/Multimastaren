@@ -90,7 +90,6 @@ export default {
       }
     }
   },
-  components: { NavBar }
 }
 </script>
 
@@ -149,6 +148,15 @@ nav div h2 {
   font-size: 10vw;
   z-index: 0;
   line-height: 10%;
+}
+
+@media screen and (max-height: 1000px) {
+  nav div {
+    font-size: 100vw;
+  }
+  nav div h2 {
+    margin-top: 0;
+  }
 }
 
 @media screen and (max-width: 480px) {
