@@ -116,9 +116,10 @@ export default {
 }
 
 nav {
-  height: 20vh;
+  height: 17vh;
   background-color: #1971A3;
   width: 100vw;
+  margin-bottom: 40px;
 }
 
 nav div {
@@ -145,7 +146,7 @@ nav div h2 {
 .object {
   color: var(--object-color);
   position: absolute;
-  font-size: 10vw;
+  font-size: 7vw;
   z-index: 0;
   line-height: 10%;
 }
