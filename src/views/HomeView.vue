@@ -31,16 +31,25 @@ export default {
         <h2 id="tabell">Välj tabeller:</h2>
         <div class="subgrid">
           <div>
-            <label><input type="checkbox" value="1" v-model="selectedTables" /><span>1</span>
+            <label>
+              <input type="checkbox" value="1" v-model="selectedTables" />
+              <span>1</span>
             </label>
-            <label><input type="checkbox" value="2" v-model="selectedTables" />
+            <label>
+              <input type="checkbox" value="2" v-model="selectedTables" />
               <span>2</span></label>
-            <label><input type="checkbox" value="3" v-model="selectedTables" />
-              <span>3</span></label>
-            <label><input type="checkbox" value="4" v-model="selectedTables" />
-              <span>4</span></label>
-            <label><input type="checkbox" value="5" v-model="selectedTables" />
-              <span>5</span></label>
+            <label>
+              <input type="checkbox" value="3" v-model="selectedTables" />
+              <span>3</span>
+            </label>
+            <label>
+              <input type="checkbox" value="4" v-model="selectedTables" />
+              <span>4</span>
+            </label>
+            <label>
+              <input type="checkbox" value="5" v-model="selectedTables" />
+              <span>5</span>
+            </label>
             <button id="remove" @click="clearBoxes">Rensa</button>
           </div>
           <div>
