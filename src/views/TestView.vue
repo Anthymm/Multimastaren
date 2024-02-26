@@ -22,7 +22,9 @@ export default {
             btnDisabled: true,
             inputDisabled: false,
             pColor: "#000",
-            amountQuestionAnswered: 1
+            amountQuestionAnswered: 1,
+            testLength: 3, //BYT LÄNGD PÅ TEST HÄR
+            userScore: 0
         };
     },
     methods: {
@@ -48,7 +50,7 @@ export default {
                 index--;
                 [values[index], values[randomIndex]] = [values[randomIndex], values[index]];
             }
-            while (values.length > 5) {
+            while (values.length > this.testLength) {
                 values.pop()
             }
             return values;
@@ -66,11 +68,14 @@ export default {
                     this.inputDisabled = true
                     this.btnText = "Nästa"
                     this.pColor = "limegreen"
+                    this.userScore++
+                    console.log(this.userScore) //REMOVE
                 } else {
                     this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
                     this.inputDisabled = true
                     this.btnText = "Nästa"
                     this.pColor = "#AC0000"
+                    console.log(this.userScore) //REMOVE
                 }
     
                 if (this.index === this.tables[0].length - 1) {
@@ -115,7 +120,7 @@ export default {
     <div class="bgBoxTest">
         <div id="homeBtnBox">
             <HomeBtn />
-            <p>Fråga {{ amountQuestionAnswered }} av 5</p>
+            <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
         </div>
         <div id="questionBox">
             <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
