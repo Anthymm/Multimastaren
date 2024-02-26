@@ -21,7 +21,8 @@ export default {
             btnText: "Svara",
             btnDisabled: true,
             inputDisabled: false,
-            pColor: "#000"
+            pColor: "#000",
+            amountQuestionAnswered: 1
         };
     },
     methods: {
@@ -54,7 +55,6 @@ export default {
         },
         focusInput( field) {
             this.$refs[field].focus();
-            console.log('focus has been activated')
     },
         onAnswer() {
             if (this.userAnswer >= 1 && this.userAnswer <= 100){
@@ -93,7 +93,8 @@ export default {
                     this.inputDisabled = false
                 }
                 this.switchBtn = true
-                this.btnText = "Svara"             
+                this.btnText = "Svara"
+                this.amountQuestionAnswered++           
         },
 
     },
@@ -114,6 +115,7 @@ export default {
     <div class="bgBoxTest">
         <div id="homeBtnBox">
             <HomeBtn />
+            <p>Fråga {{ amountQuestionAnswered }} av 5</p>
         </div>
         <div id="questionBox">
             <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
@@ -136,26 +138,41 @@ export default {
 </template>
 
 <style>
+.text{
+    color: #ffb74b;
+}
+
 p {
     font-size: 4vh;
-    color: v-bind('pColor');
-    
+    color: v-bind('pColor');    
 }
 
 #userAnswer {
     text-align: center;
     width: 10vh;
     font-size: 4vh;
+    /* color: #955a00; */
+    color:#03273b;
 }
 
 #homeBtnBox {
+    display: flex;
+    gap: 60%;
     padding: 5vh;
+}
+
+#homeBtnBox p{
+    font-size: 1.5rem;
+    /* color: #ffb74b; */
+    color: #03273b;
 }
 
 #btnAnswer {
     margin-top: 3vh;
     font-size: 1.5rem;
     padding: 0 0.5rem;
+    /* color: #955a00; */
+    color: #03273b;
 }
 
 .bgBoxTest {

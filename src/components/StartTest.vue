@@ -2,9 +2,13 @@
 export default {};
 </script>
 <template>
-  <RouterLink to="/test">Starta Test!</RouterLink>
+  <RouterLink id="linkBtn" to="/test">Starta Test!</RouterLink>
 </template>
 <style>
+#linkBtn{
+  color: #955a00;
+  /* color: #03273b; */
+}
 a {
   color: #955a00;
   font-size: 1.5rem;
@@ -14,14 +18,8 @@ a {
   text-align: center;
   border-radius: 17px;
 }
-a:focus {
-  text-decoration: none;
-  color: #955a00;
-  font-size: 1.7rem;
-}
 a:hover {
   text-decoration: none;
-  color: #955a00;
   font-size: 1.7rem;
 }
 </style>
