@@ -8,6 +8,9 @@ export default {
     created() {
         this.generateTables();
     },
+    mounted() {
+        this.focusInput('numberInput');
+    },
     data() {
         return {
             index: 0,
@@ -44,41 +47,53 @@ export default {
                 index--;
                 [values[index], values[randomIndex]] = [values[randomIndex], values[index]];
             }
-            while (values.length > 20) {
+            while (values.length > 5) {
                 values.pop()
             }
             return values;
         },
+        focusInput( field) {
+            this.$refs[field].focus();
+            console.log('focus has been activated')
+    },
         onAnswer() {
-            if (this.userAnswer === this.tables[0][this.index].answer) {
-                this.correctAnswer = 'Rätt!'
-                this.inputDisabled = true
-                this.btnText = "Nästa"
-                this.pColor = "limegreen"
-            } else {
-                this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
-                this.inputDisabled = true
-                this.btnText = "Nästa"
-                this.pColor = "red"
+            if (this.userAnswer >= 1 && this.userAnswer <= 100){
+                this.$nextTick(() => {
+                    this.focusInput('buttonInput');
+                });
+                if (this.userAnswer === this.tables[0][this.index].answer) {
+                    this.correctAnswer = 'Rätt!'
+                    this.inputDisabled = true
+                    this.btnText = "Nästa"
+                    this.pColor = "limegreen"
+                } else {
+                    this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
+                    this.inputDisabled = true
+                    this.btnText = "Nästa"
+                    this.pColor = "#AC0000"
+                }
+    
+                if (this.index === this.tables[0].length - 1) {
+                    this.btnText = "Done"
+                    this.inputDisabled = true
+                    this.btnDisabled = true
+                }
+                this.switchBtn = false 
             }
-
-            if (this.index === this.tables[0].length - 1) {
-                this.btnText = "Done"
-                this.inputDisabled = true
-                this.btnDisabled = true
-            }
-            this.switchBtn = false
         },
         nextQuestion() {
-            this.userAnswer = null
-            this.correctAnswer = null
-            if (this.index < this.tables[0].length - 1) {
-                this.index++;
-                this.correctAnswer = ''
-                this.inputDisabled = false
-            }
-            this.switchBtn = true
-            this.btnText = "Svara"
+                this.userAnswer = null
+                this.correctAnswer = null
+                this.$nextTick(() => {
+                    this.focusInput('numberInput');
+                });
+                if (this.index < this.tables[0].length - 1) {
+                    this.index++;
+                    this.correctAnswer = ''
+                    this.inputDisabled = false
+                }
+                this.switchBtn = true
+                this.btnText = "Svara"             
         },
 
     },
@@ -91,7 +106,7 @@ export default {
             }
         },
 
-    }
+    },
 };
 </script>
 
@@ -102,9 +117,19 @@ export default {
         </div>
         <div id="questionBox">
             <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
-            <input id="userAnswer" type="number" v-model="userAnswer" min="0" max="999" :disabled="inputDisabled" />
-            <input type="button" id="btnAnswer" @click="switchBtn ? onAnswer() : nextQuestion()" :value="btnText"
-                :disabled="btnDisabled" />
+            <input type="number" id="userAnswer" 
+                v-model="userAnswer" min="0" max="999" 
+                :disabled="inputDisabled" 
+                ref="numberInput"
+                @keyup.enter="switchBtn ? onAnswer() : nextQuestion()"/>
+                
+            <input type="button" id="btnAnswer" 
+                @click="switchBtn ? onAnswer() : nextQuestion()" 
+                @keydown.enter="switchBtn ? onAnswer() : nextQuestion()"
+                
+                :value="btnText" 
+                :disabled="btnDisabled" 
+                ref="buttonInput"/>
             <p>{{ correctAnswer }}</p>
         </div>
     </div>
@@ -112,8 +137,9 @@ export default {
 
 <style>
 p {
-    font-size: 3vh;
+    font-size: 4vh;
     color: v-bind('pColor');
+    
 }
 
 #userAnswer {
