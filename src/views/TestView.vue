@@ -7,6 +7,7 @@ export default {
     },
     created() {
         this.generateTables();
+        this.check();
     },
     mounted() {
         this.focusInput('numberInput');
@@ -28,6 +29,9 @@ export default {
         };
     },
     methods: {
+        check(){
+            console.log (JSON.parse(localStorage.getItem("timeSelected")))
+        },
         generateTables() {
             const allQuestions = []
 

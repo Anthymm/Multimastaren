@@ -9,7 +9,9 @@ export default {
   data() {
     return {
       selectedTables: [],
+      timeSelected: false,
     };
+
   },
   methods: {
     clearBoxes() {
@@ -17,10 +19,12 @@ export default {
     },
     selectAllBoxes() {
       this.selectedTables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      
     },
     sendValues() {
       localStorage.setItem("chosenTables", JSON.stringify(this.selectedTables));
-      // this.$emit("sendValue",this.selectedTables)
+      localStorage.setItem("timeSelected", JSON.stringify(this.timeSelected));
+    
     },
   },
 };
@@ -73,7 +77,7 @@ export default {
             <div id="SwitchContainer">
               <h2 id="ejTidText">Ingen tid</h2> 
               <label class="switch">   
-            <input type="checkbox" >       
+            <input type="checkbox" v-model="timeSelected">       
             <span class="slider round"> 
             </span>          
           </label>
@@ -114,7 +118,7 @@ body {
 /* Switch styling */
 #SwitchContainer{
   display: flex;
-  gap: 15px;
+  gap: 5px;
 }
 #tidText{
   margin-left: -20px;
