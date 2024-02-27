@@ -140,9 +140,9 @@ nav div {
 
 
 nav div h2 {
-  font-size: 1.75vw;
+  font-size: 2vw;
 
-  margin-top: 4%;
+  margin-top: 1%;
 }
 
 .object {
@@ -153,12 +153,17 @@ nav div h2 {
   line-height: 10%;
 }
 
-@media screen and (max-height: 1000px) {
+@media screen and (max-width: 1000px) {
   nav div {
-    font-size: 100vw;
+    font-size: 10vw;
+    line-height: 150%;
   }
+
   nav div h2 {
+    display: flex;
+    text-align: center;
     margin-top: 0;
+    font-size: 5vw;
   }
 }
 
@@ -169,7 +174,9 @@ nav div h2 {
   }
 
   nav div h2 {
-    font-size: 4vw;
+    display: flex;
+    text-align: center;
+    font-size: 8vw;
   }
 }
 </style>

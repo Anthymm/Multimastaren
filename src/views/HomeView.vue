@@ -92,8 +92,7 @@ export default {
 <style>
 body {
   font-family: jaldi;
-  overflow-y: hidden;
-  overflow-x: hidden;
+
 }
 .disabled {
     opacity: 0.5;
@@ -111,12 +110,14 @@ body {
 }
 
 .container {
+
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  
 }
 /* Switch styling */
 #SwitchContainer{
+  padding-bottom: 20px;
   display: flex;
   gap: 5px;
 }
@@ -142,6 +143,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 100px;
 }
 
 
@@ -295,16 +297,19 @@ input:checked + .slider:before {
 @media (max-width: 600px) {
   .box {
     width: 300px;
-    height: 700px;
+    height: 500px;
+  
   }
 
   .container {
     grid-template-columns: 1fr;
-    height: 700px;
+    height: 500px;
   }
 
   .start {
+    padding-bottom: 50px;
     margin-top: 5px;
+    margin-right: 0px;
   }
 
   .grid {
