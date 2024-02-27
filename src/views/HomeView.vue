@@ -31,6 +31,7 @@ export default {
 </script>
 <template>
   <div class="box">
+    <h1 id="description">Välj nedan vilken tabell du vill öva på!</h1>
     <div class="container">
       <div class="grid">
         <h2 id="tabell">Välj tabeller:</h2>
@@ -105,10 +106,16 @@ body {
   border-radius: 10px;
   margin: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+#description {
+  color: #ffb74b;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-bottom: 2%;
+}
 .container {
 
   display: grid;
@@ -221,9 +228,9 @@ span {
 
 #tabell {
   color: #ffb74b;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bold;
-  padding-bottom: 10%;
+  padding-bottom: 2%;
 }
 
 
@@ -297,8 +304,16 @@ input:checked + .slider:before {
 @media (max-width: 600px) {
   .box {
     width: 300px;
-    height: 500px;
+    height: 550px;
+    flex-direction: column;
   
+  }
+  #description {
+    display: flex;
+    text-align: center;
+    font-size: 1.3rem;
+    /* padding-top: 20%; */
+    margin-top: 20%;
   }
 
   .container {
@@ -308,7 +323,7 @@ input:checked + .slider:before {
 
   .start {
     padding-bottom: 50px;
-    margin-top: 5px;
+    margin-top: 20px;
     margin-right: 0px;
   }
 

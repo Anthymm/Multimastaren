@@ -97,7 +97,7 @@ export default {
   <nav>
     <div>
       <h1>MultiMästaren</h1>
-      <h2>Välj nedan vilken gånger tabell du vill öva på!</h2>
+      <h2>Maximera din kunskap, multiplicera din framgång!</h2>
     </div>
   </nav>
 </template>
@@ -141,7 +141,6 @@ nav div {
 
 nav div h2 {
   font-size: 2vw;
-
   margin-top: 1%;
 }
 
@@ -163,7 +162,7 @@ nav div h2 {
     display: flex;
     text-align: center;
     margin-top: 0;
-    font-size: 5vw;
+    font-size: 3vw;
   }
 }
 
