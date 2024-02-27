@@ -68,13 +68,20 @@ export default {
           </div>
         </div>
       </div>
-      <div class="start">
-        <div class="start-checkbox">
-          <label><input type="checkbox" /> <span>Tid</span></label>
-          <label><input type="checkbox" /> <span>Ingen Tid</span></label>
+        <div class="start">
+          <div class="start-checkbox">   
+            <div id="SwitchContainer">
+              <h2 id="ejTidText">Ingen tid</h2> 
+              <label class="switch">   
+            <input type="checkbox" >       
+            <span class="slider round"> 
+            </span>          
+          </label>
+          <h2 id="tidText">Tid</h2>
+          </div>  
         </div>
-        <StartTest @click="sendValues" v-if="this.selectedTables.length > 0" />
-      </div>
+        <StartTest @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+        </div>
     </div>
   </div>
 </template>
@@ -84,7 +91,10 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
-
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
 .box {
   width: 750px;
   height: 500px;
@@ -94,8 +104,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .container {
@@ -103,7 +111,19 @@ body {
   grid-template-columns: 1fr 1fr;
   height: 100vh;
 }
-
+/* Switch styling */
+#SwitchContainer{
+  display: flex;
+  gap: 15px;
+}
+#tidText{
+  margin-left: -20px;
+  color: #ffb74b;
+}
+#ejTidText{
+  color: #ffb74b;
+}
+/* Switch styling */
 .grid {
   padding: 20px;
   display: flex;
@@ -113,35 +133,14 @@ body {
 }
 
 .start {
-  padding: 20px;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  list-style: none;
-  color: #955a00;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 17px;
-  padding: 1rem 3rem;
 }
 
-.start-checkbox {
-  margin-bottom: 10%;
-}
 
-.start input[type="checkbox"] {
-  -webkit-appearance: initial;
-  appearance: initial;
-  width: 20px;
-  height: 20px;
-  border: 10px solid #bcd7e7;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5px;
-}
 
 .start label {
   display: flex;
@@ -220,6 +219,74 @@ span {
   font-weight: bold;
   padding-bottom: 10%;
 }
+
+
+/* switch för tid/ej tid*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+  
+  
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ffb74b;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*HÄR SLUTAR SWITCH*/
 
 @media (max-width: 600px) {
   .box {

@@ -85,7 +85,7 @@ export default {
 
         circle.style.left = xCoord + "%"
         circle.style.top = yCoord + "%"
-        circle.style.rotate = Math.floor(Math.random() * 360) + "deg"
+        circle.style.rotate = Math.floor(Math.random() * 180) + "deg"
         nav.appendChild(circle)
       }
     }
