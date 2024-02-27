@@ -4,6 +4,7 @@ import StartTest from "../components/StartTest.vue";
 export default {
   components: {
     StartTest,
+
   },
   data() {
     return {
@@ -80,8 +81,8 @@ export default {
 <style>
 body {
   font-family: jaldi;
-  overflow-y: hidden; 
-  overflow-x: hidden; 
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .box {
@@ -93,7 +94,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 
 }
 
