@@ -28,16 +28,21 @@ export default {
 }
 </script>
 <template>
-    <HomeBtn/>
     <div id="testResultText">
+        <HomeBtn/>
         <h1>Du fick {{ userScore }} antal rätt av {{ testLength }}!</h1>
-        <h2>Dina Svar: (OBS, lägg in alla svar, nu finns bara det första)</h2>
-        <p> {{ tables[0][0].question }} {{ userAnswerArray[0] }}</p>
+        <h2>Dina Svar:</h2>
+        <p v-for="(el, index) in tables[0]">{{ el.question }} {{ userAnswerArray[index] }}</p>
     </div>
 
 </template>
 <style>
 #testResultText{
-    color: #ffb74b
+    color: #ffb74b;
+    width: 750px;
+    height: 500px;
+    background-color: #2988be;
+    border-radius: 10px;
+    margin: auto;
 }
 </style>
