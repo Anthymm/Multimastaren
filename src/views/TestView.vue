@@ -1,9 +1,12 @@
 <script>
 // import { getTransitionRawChildren } from "vue";
 import HomeBtn from "../components/HomeBtn.vue"
+import ScoreBtn from "../components/ScoreBtn.vue"
+
 export default {
     components: {
-        HomeBtn
+        HomeBtn,
+        ScoreBtn
     },
     created() {
         this.generateTables();
@@ -25,7 +28,10 @@ export default {
             pColor: "#000",
             amountQuestionAnswered: 1,
             testLength: 3, //BYT LÄNGD PÅ TEST HÄR
-            userScore: 0
+            userScore: 0,
+            showScoreBtn: false,
+            userAnswerArray: []
+            
         };
     },
     methods: {
@@ -73,6 +79,7 @@ export default {
                     this.btnText = "Nästa"
                     this.pColor = "limegreen"
                     this.userScore++
+                    this.userAnswerArray.push(this.userAnswer)
                     console.log(this.userScore) //REMOVE
                 } else {
                     this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
@@ -80,12 +87,14 @@ export default {
                     this.btnText = "Nästa"
                     this.pColor = "#AC0000"
                     console.log(this.userScore) //REMOVE
+                    this.userAnswerArray.push(this.userAnswer)
                 }
     
                 if (this.index === this.tables[0].length - 1) {
                     this.btnText = "Done"
                     this.inputDisabled = true
                     this.btnDisabled = true
+                    this.finishedTestSheet()
                 }
                 this.switchBtn = false 
             }
@@ -105,6 +114,16 @@ export default {
                 this.btnText = "Svara"
                 this.amountQuestionAnswered++           
         },
+        finishedTestSheet(){
+            console.log("du fick " + this.userScore + " rätt" )
+            this.showScoreBtn = true
+        },
+        sendValues() {
+            localStorage.setItem("userScore", JSON.stringify(this.userScore));
+            localStorage.setItem("tables", JSON.stringify(this.tables)); 
+            localStorage.setItem("userAnswerArray", JSON.stringify(this.userAnswerArray));
+            localStorage.setItem("testLength", JSON.stringify(this.testLength));
+        }
 
     },
     watch: {
@@ -143,6 +162,7 @@ export default {
                 ref="buttonInput"/>
             <p>{{ correctAnswer }}</p>
         </div>
+        <ScoreBtn @click="sendValues" v-if="showScoreBtn"/>
     </div>
 </template>
 
