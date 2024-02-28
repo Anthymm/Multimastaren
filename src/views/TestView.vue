@@ -79,7 +79,7 @@ export default {
                     this.btnText = "Nästa"
                     this.pColor = "limegreen"
                     this.userScore++
-                    this.userAnswerArray.push(this.userAnswer)
+                    this.userAnswerArray.push(`${this.userAnswer}   Rätt `)
                     console.log(this.userScore) //REMOVE
                 } else {
                     this.correctAnswer = `Fel, rätt svar är: ${this.tables[0][this.index].answer}`
@@ -87,7 +87,7 @@ export default {
                     this.btnText = "Nästa"
                     this.pColor = "#AC0000"
                     console.log(this.userScore) //REMOVE
-                    this.userAnswerArray.push(this.userAnswer)
+                    this.userAnswerArray.push(`${this.userAnswer}   Fel, rätt svar: ${this.tables[0][this.index].answer}`)
                 }
     
                 if (this.index === this.tables[0].length - 1) {
@@ -192,7 +192,6 @@ p {
 
 #homeBtnBox p{
     font-size: 1.5rem;
-    /* color: #ffb74b; */
     color: #03273b;
 }
 
