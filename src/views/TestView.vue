@@ -166,7 +166,7 @@ export default {
 <template>
   <div class="bgBoxTest">
     <div v-if="timeSelected" class="timer">
-      <p>Tid kvar : {{ timer }}</p>
+      <p>Räkna tid : {{ timer }}</p>
     </div>
     <div id="homeBtnBox">
       <HomeBtn />
