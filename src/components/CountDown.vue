@@ -1,8 +1,9 @@
 <template>
-    <h1>{{ countDown }}</h1>
+    {{ countDown }}
 </template>
 
 <script>
+import router from "../router";
 export default {
     data() {
         return {
@@ -16,6 +17,8 @@ export default {
                     this.countDown -= 1
                     this.countDownTimer()
                 }, 1000)
+            } else{
+                router.push("/test")
             }
         }
     },
@@ -25,7 +28,7 @@ export default {
 }
 </script>
 <style>
-h1 {
-    color: whitesmoke;
+*{
+    color: #ffb74b;
 }
 </style>
