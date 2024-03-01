@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       timeSelected: false,
-      timer: 30,
+      timer: 30, //Byt tid på timer
       index: 0,
       tables: [],
       userAnswer: null,
@@ -46,10 +46,12 @@ export default {
             this.timer--;
           } else {
             clearInterval(this.timerInterval);
+            alert("Slut!!!!!"); //Temporary. Ändra till img?
           }
         }, 1000);
       }
     },
+
     check() {
       this.timeSelected = JSON.parse(localStorage.getItem("timeSelected"));
       console.log(this.timeSelected);
@@ -201,6 +203,18 @@ export default {
 </template>
 
 <style>
+.timer {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 2vh;
+  color: #fff;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.timer p {
+  font-size: 18px;
+  margin-bottom: 0;
+}
 .text {
   color: #ffb74b;
 }
