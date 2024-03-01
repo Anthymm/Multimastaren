@@ -2,15 +2,18 @@
 // import { getTransitionRawChildren } from "vue";
 import HomeBtn from "../components/HomeBtn.vue";
 import ScoreBtn from "../components/ScoreBtn.vue";
+import RestartTest from "../components/RestartTest.vue";
 
 export default {
   components: {
     HomeBtn,
     ScoreBtn,
+    RestartTest
+
   },
   created() {
     this.generateTables();
-    this.check();
+    this.checkTimer();
     if (this.timeSelected) {
       this.startTimer();
     }
@@ -21,7 +24,7 @@ export default {
   data() {
     return {
       timeSelected: false,
-      timer: 30, //Byt tid på timer
+      timer: 30, //Byt tid på timer, (Timer borde bero på testLength. x sek/fråga.)
       index: 0,
       tables: [],
       userAnswer: null,
@@ -39,6 +42,9 @@ export default {
     };
   },
   methods: {
+    checkTimer() {
+      this.timeSelected = JSON.parse(localStorage.getItem("timeSelected"));
+    },
     startTimer() {
       if (this.timeSelected) {
         this.timerInterval = setInterval(() => {
@@ -46,15 +52,10 @@ export default {
             this.timer--;
           } else {
             clearInterval(this.timerInterval);
-            alert("Slut!!!!!"); //Temporary. Ändra till img?
-          }
+            alert("Slut!"); //Temporary. Ändra till img?
+          } //Antingen räkna hur lång tid testet tar, Eller avbryt testet när tiden är slut. (->visa resultat-knappen kommer)
         }, 1000);
       }
-    },
-
-    check() {
-      this.timeSelected = JSON.parse(localStorage.getItem("timeSelected"));
-      console.log(this.timeSelected);
     },
     generateTables() {
       const allQuestions = [];
@@ -103,7 +104,6 @@ export default {
           this.pColor = "limegreen";
           this.userScore++;
           this.userAnswerArray.push(this.userAnswer);
-          console.log(this.userScore); //REMOVE
         } else {
           this.correctAnswer = `Fel, rätt svar är: ${
             this.tables[0][this.index].answer
@@ -111,15 +111,15 @@ export default {
           this.inputDisabled = true;
           this.btnText = "Nästa";
           this.pColor = "#AC0000";
-          console.log(this.userScore); //REMOVE
           this.userAnswerArray.push(this.userAnswer);
         }
 
         if (this.index === this.tables[0].length - 1) {
-          this.btnText = "Done";
+          this.btnText = "Klar";
           this.inputDisabled = true;
           this.btnDisabled = true;
           this.finishedTestSheet();
+          //Allt detta bör hända när Timern är slut (om vi räknar ner), kopiera detta till tidsräkningen. this.btnText = "Slut på Tid"
         }
         this.switchBtn = false;
       }
@@ -140,8 +140,7 @@ export default {
       this.amountQuestionAnswered++;
     },
     finishedTestSheet() {
-      console.log("du fick " + this.userScore + " rätt");
-      this.showScoreBtn = true;
+      this.showScoreBtn = true; 
     },
     sendValues() {
       localStorage.setItem("userScore", JSON.stringify(this.userScore));
@@ -151,6 +150,7 @@ export default {
         JSON.stringify(this.userAnswerArray)
       );
       localStorage.setItem("testLength", JSON.stringify(this.testLength));
+      //Skicka tiden så den kan stå i Result.
     },
   },
   watch: {
@@ -198,7 +198,7 @@ export default {
       />
       <p>{{ correctAnswer }}</p>
     </div>
-    <ScoreBtn @click="sendValues" v-if="showScoreBtn" />
+    <ScoreBtn @click="sendValues" v-if="showScoreBtn" /> <RestartTest v-if="showScoreBtn"/>
   </div>
 </template>
 
