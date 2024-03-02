@@ -1,8 +1,7 @@
 <script>
-// import { getTransitionRawChildren } from "vue";
 import HomeBtn from "../components/HomeBtn.vue";
 import ScoreBtn from "../components/ScoreBtn.vue";
-import RestartTest from "../components/RestartTest.vue";
+import RestartTest from "../components/RestartTest.vue"
 
 export default {
   components: {
@@ -24,7 +23,7 @@ export default {
   data() {
     return {
       timeSelected: false,
-      timer: 30, //Byt tid på timer, (Timer borde bero på testLength. x sek/fråga.)
+      timer: 10, //Byt tid på timer
       index: 0,
       tables: [],
       userAnswer: null,
@@ -35,7 +34,7 @@ export default {
       inputDisabled: false,
       pColor: "#000",
       amountQuestionAnswered: 1,
-      testLength: 3, //BYT LÄNGD PÅ TEST HÄR
+      testLength: 3, //Byt längd på test
       userScore: 0,
       showScoreBtn: false,
       userAnswerArray: [],
@@ -50,10 +49,13 @@ export default {
         this.timerInterval = setInterval(() => {
           if (this.timer > 0) {
             this.timer--;
-          } else {
-            clearInterval(this.timerInterval);
-            alert("Slut!"); //Temporary. Ändra till img?
-          } //Antingen räkna hur lång tid testet tar, Eller avbryt testet när tiden är slut. (->visa resultat-knappen kommer)
+          } else {// Detta händer när timern når 0
+            clearInterval(this.timerInterval); 
+            this.btnText = "Slut på Tid";
+            this.inputDisabled = true;
+            this.btnDisabled = true;
+            this.finishedTestSheet();
+          }
         }, 1000);
       }
     },
@@ -103,7 +105,7 @@ export default {
           this.btnText = "Nästa";
           this.pColor = "limegreen";
           this.userScore++;
-          this.userAnswerArray.push(this.userAnswer);
+          this.userAnswerArray.push(this.userAnswer + " Rätt");
         } else {
           this.correctAnswer = `Fel, rätt svar är: ${
             this.tables[0][this.index].answer
@@ -111,7 +113,7 @@ export default {
           this.inputDisabled = true;
           this.btnText = "Nästa";
           this.pColor = "#AC0000";
-          this.userAnswerArray.push(this.userAnswer);
+          this.userAnswerArray.push(this.userAnswer+ " Fel");
         }
 
         if (this.index === this.tables[0].length - 1) {
@@ -119,7 +121,6 @@ export default {
           this.inputDisabled = true;
           this.btnDisabled = true;
           this.finishedTestSheet();
-          //Allt detta bör hända när Timern är slut (om vi räknar ner), kopiera detta till tidsräkningen. this.btnText = "Slut på Tid"
         }
         this.switchBtn = false;
       }
@@ -150,7 +151,7 @@ export default {
         JSON.stringify(this.userAnswerArray)
       );
       localStorage.setItem("testLength", JSON.stringify(this.testLength));
-      //Skicka tiden så den kan stå i Result.
+      //Om vi räknar uppåt -> Skicka tiden så den kan stå i Result.
     },
   },
   watch: {
@@ -168,41 +169,48 @@ export default {
 <template>
   <div class="bgBoxTest">
     <div v-if="timeSelected" class="timer">
-      <p>Räkna tid : {{ timer }}</p>
+      <p>Tid kvar: {{ timer }}</p>
     </div>
     <div id="homeBtnBox">
       <HomeBtn />
       <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
     </div>
     <div id="questionBox">
-      <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
-      <input
-        type="number"
-        id="userAnswer"
-        v-model="userAnswer"
-        min="0"
-        max="999"
-        :disabled="inputDisabled"
-        ref="numberInput"
-        @keyup.enter="switchBtn ? onAnswer() : nextQuestion()"
-      />
-
-      <input
-        type="button"
-        id="btnAnswer"
-        @click="switchBtn ? onAnswer() : nextQuestion()"
-        @keydown.enter="switchBtn ? onAnswer() : nextQuestion()"
-        :value="btnText"
-        :disabled="btnDisabled"
-        ref="buttonInput"
-      />
-      <p>{{ correctAnswer }}</p>
+        <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
+        <input
+          type="number"
+          id="userAnswer"
+          v-model="userAnswer"
+          min="0"
+          max="999"
+          :disabled="inputDisabled"
+          ref="numberInput"
+          @keyup.enter="switchBtn ? onAnswer() : nextQuestion()"
+        />
+        <input
+          type="button"
+          id="btnAnswer"
+          @click="switchBtn ? onAnswer() : nextQuestion()"
+          @keydown.enter="switchBtn ? onAnswer() : nextQuestion()"
+          :value="btnText"
+          :disabled="btnDisabled"
+          ref="buttonInput"
+        />
+        <p>{{ correctAnswer }}</p>
+      <div id="afterTestBtns">
+        <ScoreBtn @click="sendValues" v-if="showScoreBtn" /> 
+        <RestartTest v-if="showScoreBtn"/>
+      </div>
     </div>
-    <ScoreBtn @click="sendValues" v-if="showScoreBtn" /> <RestartTest v-if="showScoreBtn"/>
   </div>
 </template>
 
 <style>
+#afterTestBtns{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 .timer {
   text-align: left;
   margin-top: 10px;
@@ -228,7 +236,6 @@ p {
   text-align: center;
   width: 10vh;
   font-size: 4vh;
-  /* color: #955a00; */
   color: #03273b;
 }
 
@@ -240,7 +247,6 @@ p {
 
 #homeBtnBox p {
   font-size: 1.5rem;
-  /* color: #ffb74b; */
   color: #03273b;
 }
 
@@ -248,7 +254,6 @@ p {
   margin-top: 3vh;
   font-size: 1.5rem;
   padding: 0 0.5rem;
-  /* color: #955a00; */
   color: #03273b;
 }
 
@@ -261,11 +266,8 @@ p {
 }
 
 #questionBox {
-  margin: auto;
-  margin-top: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #2988be;
 }

@@ -30,11 +30,11 @@ export default {
 </script>
 <template>
     <div id="bgBox">
-        <div id="homeBtnBox">
-            <HomeBtn />
+        <div id="homeBtnBox2">
+            <HomeBtn /><h1>Du fick {{ userScore }} rätt av {{ testLength }}!</h1>
         </div>
         <div id="testResultText">
-            <h1>Du fick {{ userScore }} rätt av {{ testLength }}!</h1>
+            
             <h2>Dina Svar:</h2>
             <p v-for="(el, index) in tables[0]">{{ el.question }} {{ userAnswerArray[index] }}</p>
             <RestartTest />
@@ -44,16 +44,18 @@ export default {
 <style>
 #bgBox {
     width: 750px;
-    height: 500px;
+    min-height: 500px;
     background-color: #2988be;
     border-radius: 10px;
     margin: auto;
 }
 
-#homeBtnBox {
+#homeBtnBox2 {
     display: flex;
-    gap: 60%;
-    padding: 5vh;
+    gap: 6rem;
+    align-items: end;
+    padding: 5%;
+    padding-bottom: 2.5px;
 }
 
 #testResultText {
@@ -62,5 +64,6 @@ export default {
     justify-content: center;
     align-items: center;
     color: #ffb74b;
+    /* margin-bottom: 20px; */
 }
 </style>

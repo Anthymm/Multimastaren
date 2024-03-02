@@ -2,14 +2,14 @@
 export default {};
 </script>
 <template>
-  <RouterLink id="linkBtn" to="/test">Kör igen!</RouterLink>
+  <RouterLink id="restartBtn" to="/test">Kör igen!</RouterLink>
 </template>
 <style>
-#linkBtn{
+#restartBtn{
   color: #955a00;
   /* color: #03273b; */
 }
-a {
+#restartBtn{
   color: #955a00;
   font-size: 1.5rem;
   text-decoration: none !important;
@@ -18,9 +18,8 @@ a {
   text-align: center;
   border-radius: 17px;
 }
-a:hover {
+#restartBtn:hover {
   text-decoration: none;
   font-size: 1.7rem;
-  color:#bcd7e7;
 }
 </style>

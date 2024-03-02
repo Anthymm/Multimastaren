@@ -13,9 +13,6 @@ a {
 }
 
 i {
-    /* color: #000; */
-    /* color: #955a00; */
-    /* color: #2988BE; */
     color: #03273b;
     font-size: 2rem;
     border-radius: 17px;

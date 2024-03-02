@@ -2,14 +2,13 @@
 export default {};
 </script>
 <template>
-  <RouterLink id="linkBtn" to="/score">Visa Resultat</RouterLink>
+  <RouterLink id="scoreBtn" to="/score">Resultat</RouterLink>
 </template>
 <style>
-#linkBtn{
+#scoreBtnBtn{
   color: #955a00;
-  /* color: #03273b; */
 }
-a {
+#scoreBtn {
   color: #955a00;
   font-size: 1.5rem;
   text-decoration: none !important;
@@ -18,9 +17,8 @@ a {
   text-align: center;
   border-radius: 17px;
 }
-a:hover {
+#scoreBtn:hover {
   text-decoration: none;
   font-size: 1.7rem;
-  color:#bcd7e7;
 }
 </style>

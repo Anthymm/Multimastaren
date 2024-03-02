@@ -1,5 +1,6 @@
 <script>
 export default {};
+
 </script>
 <template>
   <RouterLink id="linkBtn" to="/ready">Starta Test!</RouterLink>
@@ -7,7 +8,6 @@ export default {};
 <style>
 #linkBtn{
   color: #955a00;
-  /* color: #03273b; */
 }
 a {
   color: #955a00;
@@ -18,9 +18,8 @@ a {
   text-align: center;
   border-radius: 17px;
 }
-a:hover {
+#linkBtn:hover {
   text-decoration: none;
   font-size: 1.7rem;
-  color:#bcd7e7;
 }
 </style>
