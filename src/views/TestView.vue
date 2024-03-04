@@ -171,9 +171,7 @@ export default {
 
 <template>
   <div class="bgBoxTest">
-    <div v-if="timeSelected" class="timer">
-      <p>Tid kvar: {{ timer }}</p>
-    </div>
+    
     <div id="homeBtnBox">
       <HomeBtn />
       <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
@@ -210,7 +208,12 @@ export default {
    
         <RestartTestBtn @click="reloadPage" v-if="showScoreBtn"/>
     </div>
+ 
       </div>
+        
+    </div>
+    <div v-if="timeSelected" class="timer">
+      <p>Tid kvar: {{ timer }}</p>
     </div>
     </div>
   
@@ -230,19 +233,18 @@ export default {
 
 
 .timer {
+  padding-left: 2rem;
+  position: absolute; bottom: 10px;
   
-  position: absolute; bottom: 0px;
-  
-  padding-bottom: 40px;
   /* margin-top: 10px; */
   font-size: 2vh;
   color: #fff;
   padding-bottom: 2rem;
-  padding-left: 1.6rem;
+
 }
 .timer p {
   font-size: 40px;
-  margin-bottom: 0;
+
 }
 .text {
   color: #ffb74b;
@@ -280,7 +282,7 @@ p {
 
 .bgBoxTest {
   width: 750px;
-  height: 500px;
+  min-height: 500px;
   background-color: #2988be;
   border-radius: 10px;
   margin: auto;
