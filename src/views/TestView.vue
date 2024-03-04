@@ -34,7 +34,7 @@ export default {
       inputDisabled: false,
       pColor: "#000",
       amountQuestionAnswered: 1,
-      testLength: 15, //Byt längd på test
+      testLength: 3, //Byt längd på test
       userScore: 0,
       showScoreBtn: false,
       userAnswerArray: [],
@@ -174,7 +174,7 @@ export default {
     
     <div id="homeBtnBox">
       <HomeBtn />
-      <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
+   
     </div>
     <div id="questionBox">
         <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
@@ -213,7 +213,8 @@ export default {
         
     </div>
     <div v-if="timeSelected" class="timer">
-      <p>Tid kvar: {{ timer }}</p>
+        <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
+      <h2>Tid kvar : {{ timer }}</h2>
     </div>
     </div>
   
@@ -238,11 +239,16 @@ export default {
   
   /* margin-top: 10px; */
   font-size: 2vh;
-  color: #fff;
-  padding-bottom: 2rem;
+  
+  padding-bottom: 2.5rem;
 
 }
 .timer p {
+  font-size: 25px;
+  color: #ffb74b;
+  margin-bottom: -5px;
+}
+.timer h2{
   font-size: 40px;
 
 }
@@ -254,7 +260,6 @@ p {
   font-size: 4vh;
   color: v-bind("pColor");
 }
-
 #userAnswer {
   text-align: center;
   width: 10vh;
