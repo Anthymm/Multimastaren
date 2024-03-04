@@ -230,17 +230,18 @@ export default {
 
 
 .timer {
+  
   position: absolute; bottom: 0px;
-  text-align: left;
+  
   padding-bottom: 40px;
   /* margin-top: 10px; */
   font-size: 2vh;
   color: #fff;
-  /* padding-top: 10px; */
-  padding-left: 10px;
+  padding-bottom: 5vh;
+  padding-left: 3vh;
 }
 .timer p {
-  font-size: 18px;
+  font-size: 40px;
   margin-bottom: 0;
 }
 .text {
