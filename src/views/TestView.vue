@@ -34,7 +34,7 @@ export default {
       inputDisabled: false,
       pColor: "#000",
       amountQuestionAnswered: 1,
-      testLength: 3, //Byt längd på test
+      testLength: 15, //Byt längd på test
       userScore: 0,
       showScoreBtn: false,
       userAnswerArray: [],
@@ -222,9 +222,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
-  margin-top: 40px
-
-
+  margin-top: 15px;
 }
 
 

@@ -37,33 +37,42 @@ export default {
             
             <h2>Dina Svar:</h2>
             <p v-for="(el, index) in tables[0]">{{ el.question }} {{ userAnswerArray[index] }}</p>
-            <RestartTestBtn />
+            <div id="restarBtn">   <RestartTestBtn /></div>
         </div>
+
     </div>
 </template>
 <style>
 #bgBox {
+    
     width: 750px;
     min-height: 500px;
     background-color: #2988be;
     border-radius: 10px;
     margin: auto;
+    padding-bottom: 20px;
 }
 
 #homeBtnBox2 {
     display: flex;
-    gap: 15%;
+    gap: 11.56vh;
     align-items: end;
     padding: 5vh;
+    
     padding-bottom: 5px;
+}
+
+#homeBtnBox2 h1{
+    font-size: 2.3em;
 }
 
 #homeLink  {
     display: flex;
     gap: 60%;
-    /* align-items: end; */
-    /* padding: 5vh; */
  
+}
+#restartBtn{
+    margin-bottom: 20px;
 }
 #testResultText {
     display: flex;
@@ -71,6 +80,6 @@ export default {
     justify-content: center;
     align-items: center;
     color: #ffb74b;
-    /* margin-bottom: 20px; */
+    /* margin-bottom: 30px; */
 }
 </style>
