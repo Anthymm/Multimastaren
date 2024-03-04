@@ -197,10 +197,14 @@ export default {
           ref="buttonInput"
         />
         <p>{{ correctAnswer }}</p>
+        <div id="bigBtn">
       <div id="afterTestBtns">
         <ScoreBtn @click="sendValues" v-if="showScoreBtn" /> 
-        <RestartTest v-if="showScoreBtn"/>
-      </div>
+        </div>
+        <div id="afterTestBtn">
+            <RestartTest v-if="showScoreBtn"/>
+        </div>
+    </div>
     </div>
   </div>
 </template>
@@ -209,7 +213,13 @@ export default {
 #afterTestBtns{
   display: flex;
   justify-content: center;
-  gap: 20px;
+    margin-bottom: 20px;
+}
+#afterTestBtn{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
 }
 .timer {
   text-align: left;
@@ -259,7 +269,7 @@ p {
 
 .bgBoxTest {
   width: 750px;
-  height: 500px;
+  height: 550px;
   background-color: #2988be;
   border-radius: 10px;
   margin: auto;
