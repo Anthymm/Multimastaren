@@ -7,7 +7,7 @@ export default {};
 <style>
 #restartBtn{
   color: #955a00;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-decoration: none !important;
   background-color: #bcd7e7;
   padding: 0.5rem 2rem;
@@ -16,6 +16,8 @@ export default {};
 }
 #restartBtn:hover {
   text-decoration: none;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
+  background-color: #2196F3 ;
+  color:#ffb74b; 
 }
 </style>
