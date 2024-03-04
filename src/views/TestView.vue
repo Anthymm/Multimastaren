@@ -201,10 +201,10 @@ export default {
         />
         <p>{{ correctAnswer }}</p>
         <div id="bigBtn">
-      <div id="afterTestBtns">
+      <div id="afterScoreBtn">
         <ScoreBtn @click="sendValues" v-if="showScoreBtn" /> 
         </div>
-        <div id="afterTestBtn">
+        <div id="afterResultBtn">
             <RestartTest v-if="showScoreBtn"/>
        
    
@@ -227,15 +227,18 @@ export default {
 
 }
 
+
  
 
 
 .timer {
+  position: absolute; bottom: 0px;
   text-align: left;
-  margin-top: 10px;
+  padding-bottom: 40px;
+  /* margin-top: 10px; */
   font-size: 2vh;
   color: #fff;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   padding-left: 10px;
 }
 .timer p {
@@ -278,7 +281,7 @@ p {
 
 .bgBoxTest {
   width: 750px;
-  height: 550px;
+  height: 500px;
   background-color: #2988be;
   border-radius: 10px;
   margin: auto;

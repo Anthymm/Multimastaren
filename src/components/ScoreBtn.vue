@@ -10,7 +10,7 @@ export default {};
 }
 #scoreBtn {
   color: #955a00;
-  font-size: 1.65rem;
+  font-size: 1.8rem;
   text-decoration: none !important;
   background-color: #bcd7e7;
   padding: 0.5rem 2rem;
@@ -19,6 +19,6 @@ export default {};
 }
 #scoreBtn:hover {
   text-decoration: none;
-  font-size: 1.7rem;
+  font-size: 1.85rem;
 }
 </style>

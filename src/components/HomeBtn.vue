@@ -18,9 +18,10 @@ export default {
   border-radius: 17px;
 }
 
+
 i {
     color: #03273b;
-    font-size: 2rem;
-    border-radius: 17px;
+    /* font-size: 2rem; */
+    /* border-radius: 17px; */
 }
 </style>

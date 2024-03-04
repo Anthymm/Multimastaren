@@ -52,12 +52,19 @@ export default {
 
 #homeBtnBox2 {
     display: flex;
-    gap: 6rem;
+    gap: 15%;
     align-items: end;
-    padding: 5%;
-    padding-bottom: 2.5px;
+    padding: 5vh;
+    padding-bottom: 5px;
 }
 
+#homeLink  {
+    display: flex;
+    gap: 60%;
+    /* align-items: end; */
+    /* padding: 5vh; */
+ 
+}
 #testResultText {
     display: flex;
     flex-direction: column;
