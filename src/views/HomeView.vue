@@ -1,11 +1,11 @@
 <script>
-import StartTest from "../components/StartTest.vue";
-import StartTestTime from "../components/StartTestTime.vue"
+import StartTestBtn from "../components/StartTestBtn.vue";
+import StartTestTimeBtn from "../components/StartTestTimeBtn.vue";
 
 export default {
   components: {
-    StartTest,
-    StartTestTime
+    StartTestBtn,
+    StartTestTimeBtn
 
   },
   data() {
@@ -75,17 +75,27 @@ export default {
           </div>
         </div>
       </div>
-      <div class="start">
-        <div class="start-checkbox">
-          <div id="SwitchContainer">
-            <h2 id="ejTidText">Ingen tid</h2>
-            <label class="switch">
-              <input type="checkbox" v-model="timeSelected">
-              <span class="slider round">
-              </span>
-            </label>
-            <h2 id="tidText">Tid</h2>
-          </div>
+        <div class="start">
+          <div class="start-checkbox">   
+            <div id="SwitchContainer">
+              <h2 id="ejTidText">Ingen tid</h2> 
+              <label class="switch">   
+            <input type="checkbox" v-model="timeSelected">       
+            <span class="slider round"> 
+            </span>          
+          </label>
+          <h2 id="tidText">Tid</h2>
+          </div>  
+        </div>
+        <div>
+          <template v-if="timeSelected">
+            <StartTestTimeBtn @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+          </template>
+          <template v-else>
+            <StartTestBtn @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+          </template>
+        </div>
+        
         </div>
         <StartTestTime  v-if="timeSelected" @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
         <StartTest v-else @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }" />
