@@ -14,7 +14,8 @@ export default {
             userScore: "",
             tables: [],
             userAnswerArray: [],
-            testLength: 0
+            testLength: 0,
+            timer: 0
         }
 
     },
@@ -24,6 +25,7 @@ export default {
             this.tables = JSON.parse(localStorage.getItem("tables"))
             this.userAnswerArray = JSON.parse(localStorage.getItem("userAnswerArray"))
             this.testLength = JSON.parse(localStorage.getItem("testLength"))
+            this.timer = JSON.parse(localStorage.getItem("timer"))
         }
     }
 }
@@ -45,6 +47,7 @@ export default {
                     <p v-for="(el, index) in tables[0].slice(5)">{{ el.question }} {{ userAnswerArray[index + 5] }}</p>
                 </div>  
             </div>
+            <p v-if="timer > 0">Tid: {{ timer }} sekunder</p>
             
             <RestartTestBtn />
         </div>
@@ -55,6 +58,8 @@ export default {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    line-height: 25px;
+    
 }
 #bgBox {
     width: 750px;
@@ -67,10 +72,13 @@ export default {
 
 #homeBtnBox2 {
     display: flex;
-    gap: 15%;
+    gap: 18%;
     align-items: end;
     padding: 5vh;
     padding-bottom: 5px;
+}
+#homeBtnBox2 h1 {
+    font-size: 2rem;
 }
 
 #homeLink  {

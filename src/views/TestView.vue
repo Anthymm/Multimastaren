@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       timeSelected: false,
-      timer: 0, //Byt tid på timer
+      timer: 0,
       index: 0,
       tables: [],
       userAnswer: null,
@@ -33,7 +33,7 @@ export default {
       inputDisabled: false,
       pColor: "#000",
       amountQuestionAnswered: 1,
-      testLength: 3, //Byt längd på test
+      testLength: 10, //Byt längd på test
       userScore: 0,
       showScoreBtn: false,
       userAnswerArray: [],
@@ -149,7 +149,7 @@ export default {
         JSON.stringify(this.userAnswerArray)
       );
       localStorage.setItem("testLength", JSON.stringify(this.testLength));
-      //Om vi räknar uppåt -> Skicka tiden så den kan stå i Result.
+      localStorage.setItem("timer", JSON.stringify(this.timer)); 
     },
     reloadPage() {
       window.location.reload();
@@ -205,10 +205,10 @@ export default {
         </div>
       </div>
     </div>
-    <div v-if="timeSelected" class="timer">
-      <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
-      <h2>Tid : {{ timer }}</h2>
-      <button @click="stopTimer" class="stopButton">Stop</button>
+    <div>
+      <p class="timer">Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
+      <h2 v-if="timeSelected" class="timer">Tid : {{ timer }}</h2>
+      <!-- <button @click="stopTimer" class="stopButton">Stop</button> -->
     </div>
   </div>
 </template>
@@ -222,31 +222,34 @@ export default {
 }
 
 .timer {
-  position: absolute;
-  bottom: 0px;
+  /* position: absolute; */
+  /* margin-bottom: 0px; */
   text-align: left;
-
   padding-left: 2rem;
-  position: absolute;
-  bottom: 10px;
-}
-.timer p {
+  /* position: absolute; */
+  /* bottom: 10px; */
   font-size: 25px;
   color: #ffb74b;
-  margin-bottom: -5px;
+  line-height: 20px;
+  
 }
-.timer h2 {
+/* .timer p {
+  font-size: 25px;
+  color: #ffb74b;
+} */
+
+/* .timer h2 {
   font-size: 40px;
-}
+} */
 .text {
   color: #ffb74b;
 }
 
-.stopButton {
+/* .stopButton {
   font-size: 1.5rem;
   padding: 0 0.5rem;
   color: #03273b;
-}
+} */
 p {
   font-size: 4vh;
   color: v-bind("pColor");
