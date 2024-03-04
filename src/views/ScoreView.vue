@@ -34,17 +34,29 @@ export default {
             <HomeBtn /><h1>Du fick {{ userScore }} rätt av {{ testLength }}!</h1>
         </div>
         <div id="testResultText">
-            
             <h2>Dina Svar:</h2>
-            <p v-for="(el, index) in tables[0]">{{ el.question }} {{ userAnswerArray[index] }}</p>
-            <div id="restarBtn">   <RestartTestBtn /></div>
+            <div id="resultContainer">
+                <div>
+                    <!-- Första 5 svaren -->
+                    <p v-for="(el, index) in tables[0].slice(0, 5)">{{ el.question }} {{ userAnswerArray[index] }}</p>
+                </div>
+                <div>
+                    <!-- Sista 5 svaren -->
+                    <p v-for="(el, index) in tables[0].slice(5)">{{ el.question }} {{ userAnswerArray[index + 5] }}</p>
+                </div>  
+            </div>
+            
+            <RestartTestBtn />
         </div>
-
     </div>
 </template>
 <style>
+#resultContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
 #bgBox {
-    
     width: 750px;
     min-height: 500px;
     background-color: #2988be;
@@ -55,24 +67,18 @@ export default {
 
 #homeBtnBox2 {
     display: flex;
-    gap: 11.56vh;
+    gap: 15%;
     align-items: end;
     padding: 5vh;
-    
     padding-bottom: 5px;
-}
-
-#homeBtnBox2 h1{
-    font-size: 2.3em;
 }
 
 #homeLink  {
     display: flex;
     gap: 60%;
+    /* align-items: end; */
+    /* padding: 5vh; */
  
-}
-#restartBtn{
-    margin-bottom: 20px;
 }
 #testResultText {
     display: flex;
@@ -80,6 +86,6 @@ export default {
     justify-content: center;
     align-items: center;
     color: #ffb74b;
-    /* margin-bottom: 30px; */
+    /* margin-bottom: 20px; */
 }
 </style>

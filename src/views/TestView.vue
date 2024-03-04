@@ -34,7 +34,7 @@ export default {
       inputDisabled: false,
       pColor: "#000",
       amountQuestionAnswered: 1,
-      testLength: 15, //Byt längd på test
+      testLength: 10, //Byt längd på test
       userScore: 0,
       showScoreBtn: false,
       userAnswerArray: [],
