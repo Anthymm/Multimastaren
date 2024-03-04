@@ -1,14 +1,13 @@
 <script>
 import HomeBtn from "../components/HomeBtn.vue";
 import ScoreBtn from "../components/ScoreBtn.vue";
-import RestartTestBtn from "../components/RestartTestBtn.vue"
+import RestartTestBtn from "../components/RestartTestBtn.vue";
 
 export default {
   components: {
     HomeBtn,
     ScoreBtn,
-    RestartTestBtn
-
+    RestartTestBtn,
   },
   created() {
     this.generateTables();
@@ -23,7 +22,7 @@ export default {
   data() {
     return {
       timeSelected: false,
-      timer: 10, //Byt tid på timer
+      timer: 0, //Byt tid på timer
       index: 0,
       tables: [],
       userAnswer: null,
@@ -34,7 +33,7 @@ export default {
       inputDisabled: false,
       pColor: "#000",
       amountQuestionAnswered: 1,
-      testLength: 10, //Byt längd på test
+      testLength: 3, //Byt längd på test
       userScore: 0,
       showScoreBtn: false,
       userAnswerArray: [],
@@ -46,19 +45,17 @@ export default {
     },
     startTimer() {
       if (this.timeSelected) {
+        // Start the timer to count up every second
         this.timerInterval = setInterval(() => {
-          if (this.timer > 0) {
-            this.timer--;
-          } else {// Detta händer när timern når 0
-            clearInterval(this.timerInterval); 
-            this.btnText = "Slut på Tid";
-            this.inputDisabled = true;
-            this.btnDisabled = true;
-            this.finishedTestSheet();
-          }
+          this.timer++;
         }, 1000);
       }
     },
+    stopTimer() {
+      // Stop the timer
+      clearInterval(this.timerInterval);
+    },
+
     generateTables() {
       const allQuestions = [];
 
@@ -113,7 +110,7 @@ export default {
           this.inputDisabled = true;
           this.btnText = "Nästa";
           this.pColor = "#AC0000";
-          this.userAnswerArray.push(this.userAnswer+ " Fel");
+          this.userAnswerArray.push(this.userAnswer + " Fel");
         }
 
         if (this.index === this.tables[0].length - 1) {
@@ -141,7 +138,8 @@ export default {
       this.amountQuestionAnswered++;
     },
     finishedTestSheet() {
-      this.showScoreBtn = true; 
+      this.showScoreBtn = true;
+      this.stopTimer();
     },
     sendValues() {
       localStorage.setItem("userScore", JSON.stringify(this.userScore));
@@ -153,9 +151,9 @@ export default {
       localStorage.setItem("testLength", JSON.stringify(this.testLength));
       //Om vi räknar uppåt -> Skicka tiden så den kan stå i Result.
     },
-    reloadPage(){
-      window.location.reload()
-    }
+    reloadPage() {
+      window.location.reload();
+    },
   },
   watch: {
     userAnswer() {
@@ -171,90 +169,88 @@ export default {
 
 <template>
   <div class="bgBoxTest">
-    
     <div id="homeBtnBox">
       <HomeBtn />
-      <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
     </div>
     <div id="questionBox">
-        <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
-        <input
-          type="number"
-          id="userAnswer"
-          v-model="userAnswer"
-          min="0"
-          max="999"
-          :disabled="inputDisabled"
-          ref="numberInput"
-          @keyup.enter="switchBtn ? onAnswer() : nextQuestion()"
-        />
-        <input
-          type="button"
-          id="btnAnswer"
-          @click="switchBtn ? onAnswer() : nextQuestion()"
-          @keydown.enter="switchBtn ? onAnswer() : nextQuestion()"
-          :value="btnText"
-          :disabled="btnDisabled"
-          ref="buttonInput"
-        />
-        <p>{{ correctAnswer }}</p>
-        <div id="bigBtn">
-      <div id="afterScoreBtn">
-        <ScoreBtn @click="sendValues" v-if="showScoreBtn" /> 
+      <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
+      <input
+        type="number"
+        id="userAnswer"
+        v-model="userAnswer"
+        min="0"
+        max="999"
+        :disabled="inputDisabled"
+        ref="numberInput"
+        @keyup.enter="switchBtn ? onAnswer() : nextQuestion()"
+      />
+      <input
+        type="button"
+        id="btnAnswer"
+        @click="switchBtn ? onAnswer() : nextQuestion()"
+        @keydown.enter="switchBtn ? onAnswer() : nextQuestion()"
+        :value="btnText"
+        :disabled="btnDisabled"
+        ref="buttonInput"
+      />
+      <p>{{ correctAnswer }}</p>
+      <div id="bigBtn">
+        <div id="afterScoreBtn">
+          <ScoreBtn @click="sendValues" v-if="showScoreBtn" />
         </div>
         <div id="afterResultBtn">
-            <RestartTest v-if="showScoreBtn"/>
-       
-   
-        <RestartTestBtn @click="reloadPage" v-if="showScoreBtn"/>
-    </div>
- 
+          <RestartTest v-if="showScoreBtn" />
+
+          <RestartTestBtn @click="reloadPage" v-if="showScoreBtn" />
+        </div>
       </div>
-        
     </div>
     <div v-if="timeSelected" class="timer">
-      <p>Tid kvar: {{ timer }}</p>
+      <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
+      <h2>Tid : {{ timer }}</h2>
+      <button @click="stopTimer" class="stopButton">Stop</button>
     </div>
-    </div>
-  
+  </div>
 </template>
 
 <style>
-
 #bigBtn {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
-  margin-top: 15px;
+  margin-top: 40px;
 }
-
-
- 
-
 
 .timer {
-  padding-left: 2rem;
-  position: absolute; bottom: 10px;
-  
-  /* margin-top: 10px; */
-  font-size: 2vh;
-  color: #fff;
-  padding-bottom: 2rem;
+  position: absolute;
+  bottom: 0px;
+  text-align: left;
 
+  padding-left: 2rem;
+  position: absolute;
+  bottom: 10px;
 }
 .timer p {
+  font-size: 25px;
+  color: #ffb74b;
+  margin-bottom: -5px;
+}
+.timer h2 {
   font-size: 40px;
-
 }
 .text {
   color: #ffb74b;
 }
 
+.stopButton {
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+  color: #03273b;
+}
 p {
   font-size: 4vh;
   color: v-bind("pColor");
 }
-
 #userAnswer {
   text-align: center;
   width: 10vh;
