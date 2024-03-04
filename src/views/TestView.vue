@@ -237,8 +237,8 @@ export default {
   /* margin-top: 10px; */
   font-size: 2vh;
   color: #fff;
-  padding-bottom: 5vh;
-  padding-left: 3vh;
+  padding-bottom: 2rem;
+  padding-left: 1.6rem;
 }
 .timer p {
   font-size: 40px;
