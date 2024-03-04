@@ -206,26 +206,30 @@ export default {
         </div>
         <div id="afterTestBtn">
             <RestartTest v-if="showScoreBtn"/>
-        </div>
-    </div>
+       
+   
         <RestartTestBtn @click="reloadPage" v-if="showScoreBtn"/>
+    </div>
       </div>
+    </div>
     </div>
   
 </template>
 
 <style>
-#afterTestBtns{
-  display: flex;
-  justify-content: center;
-    margin-bottom: 20px;
-}
-#afterTestBtn{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+
+#bigBtn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  margin-top: 40px
+
 
 }
+
+ 
+
+
 .timer {
   text-align: left;
   margin-top: 10px;
