@@ -208,7 +208,7 @@ export default {
     <div v-if="timeSelected" class="timer">
       <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
       <h2>Tid : {{ timer }}</h2>
-      <button @click="stopTimer">Stop Timer</button>
+      <button @click="stopTimer" class="stopButton">Stop</button>
     </div>
   </div>
 </template>
@@ -242,6 +242,11 @@ export default {
   color: #ffb74b;
 }
 
+.stopButton {
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+  color: #03273b;
+}
 p {
   font-size: 4vh;
   color: v-bind("pColor");
