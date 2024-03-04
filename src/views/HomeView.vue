@@ -1,9 +1,11 @@
 <script>
-import StartTest from "../components/StartTest.vue";
+import StartTestBtn from "../components/StartTestBtn.vue";
+import StartTestTimeBtn from "../components/StartTestTimeBtn.vue";
 
 export default {
   components: {
-    StartTest,
+    StartTestBtn,
+    StartTestTimeBtn
 
   },
   data() {
@@ -85,7 +87,15 @@ export default {
           <h2 id="tidText">Tid</h2>
           </div>  
         </div>
-        <StartTest @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+        <div>
+          <template v-if="timeSelected">
+            <StartTestTimeBtn @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+          </template>
+          <template v-else>
+            <StartTestBtn @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+          </template>
+        </div>
+        
         </div>
     </div>
   </div>

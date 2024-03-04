@@ -1,10 +1,10 @@
 <script>
 import HomeBtn from "../components/HomeBtn.vue"
-import RestartTest from "../components/RestartTest.vue";
+import RestartTestBtn from "../components/RestartTestBtn.vue";
 export default {
     components: {
         HomeBtn,
-        RestartTest
+        RestartTestBtn
     },
     created() {
         this.setValues();
@@ -37,7 +37,7 @@ export default {
             
             <h2>Dina Svar:</h2>
             <p v-for="(el, index) in tables[0]">{{ el.question }} {{ userAnswerArray[index] }}</p>
-            <RestartTest />
+            <RestartTestBtn />
         </div>
     </div>
 </template>

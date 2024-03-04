@@ -7,10 +7,6 @@ export default {};
 <style>
 #restartBtn{
   color: #955a00;
-  /* color: #03273b; */
-}
-#restartBtn{
-  color: #955a00;
   font-size: 1.5rem;
   text-decoration: none !important;
   background-color: #bcd7e7;

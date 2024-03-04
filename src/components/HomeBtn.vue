@@ -5,11 +5,17 @@ export default {
 }
 </script>
 <template>
-    <RouterLink to="/"><i class="bi bi-house-door-fill"></i></RouterLink>
+    <RouterLink id="homeLink" to="/"><i class="bi bi-house-door-fill"></i></RouterLink>
 </template>
 <style>
-a {
-    background-color: #BCD7E7;
+#homeLink{
+    color: #955a00;
+  font-size: 1.5rem;
+  text-decoration: none !important;
+  background-color: #bcd7e7;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  border-radius: 17px;
 }
 
 i {
