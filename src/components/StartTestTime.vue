@@ -3,7 +3,7 @@ export default {};
 
 </script>
 <template>
-  <RouterLink id="linkBtn" to="/test">Starta Test!</RouterLink>
+  <RouterLink id="linkBtn" to="/ready">Starta Test!</RouterLink>
 </template>
 <style>
 #linkBtn{

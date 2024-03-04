@@ -1,9 +1,11 @@
 <script>
 import StartTest from "../components/StartTest.vue";
+import StartTestTime from "../components/StartTestTime.vue"
 
 export default {
   components: {
     StartTest,
+    StartTestTime
 
   },
   data() {
@@ -19,12 +21,12 @@ export default {
     },
     selectAllBoxes() {
       this.selectedTables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      
+
     },
     sendValues() {
       localStorage.setItem("chosenTables", JSON.stringify(this.selectedTables));
       localStorage.setItem("timeSelected", JSON.stringify(this.timeSelected));
-    
+
     },
   },
 };
@@ -73,20 +75,22 @@ export default {
           </div>
         </div>
       </div>
-        <div class="start">
-          <div class="start-checkbox">   
-            <div id="SwitchContainer">
-              <h2 id="ejTidText">Ingen tid</h2> 
-              <label class="switch">   
-            <input type="checkbox" v-model="timeSelected">       
-            <span class="slider round"> 
-            </span>          
-          </label>
-          <h2 id="tidText">Tid</h2>
-          </div>  
+      <div class="start">
+        <div class="start-checkbox">
+          <div id="SwitchContainer">
+            <h2 id="ejTidText">Ingen tid</h2>
+            <label class="switch">
+              <input type="checkbox" v-model="timeSelected">
+              <span class="slider round">
+              </span>
+            </label>
+            <h2 id="tidText">Tid</h2>
+          </div>
         </div>
-        <StartTest @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
-        </div>
+        <StartTestTime  v-if="timeSelected" @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
+        <StartTest v-else @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }" />
+
+      </div>
     </div>
   </div>
 </template>
@@ -95,10 +99,12 @@ body {
   font-family: jaldi;
 
 }
+
 .disabled {
-    opacity: 0.5;
-    pointer-events: none;
+  opacity: 0.5;
+  pointer-events: none;
 }
+
 .box {
   width: 750px;
   height: 500px;
@@ -110,31 +116,37 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #description {
   color: #ffb74b;
   font-size: 2rem;
   font-weight: bold;
   padding-bottom: 2%;
 }
+
 .container {
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
+
 }
+
 /* Switch styling */
-#SwitchContainer{
+#SwitchContainer {
   padding-bottom: 20px;
   display: flex;
   gap: 5px;
 }
-#tidText{
+
+#tidText {
   margin-left: -20px;
   color: #ffb74b;
 }
-#ejTidText{
+
+#ejTidText {
   color: #ffb74b;
 }
+
 /* Switch styling */
 .grid {
   padding: 20px;
@@ -145,7 +157,7 @@ body {
 }
 
 .start {
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -243,12 +255,12 @@ span {
 
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
-  
-  
+
+
 }
 
 .slider {
@@ -261,7 +273,7 @@ span {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
-  
+
 }
 
 .slider:before {
@@ -276,15 +288,15 @@ span {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #ffb74b;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -306,8 +318,9 @@ input:checked + .slider:before {
     width: 300px;
     height: 550px;
     flex-direction: column;
-  
+
   }
+
   #description {
     display: flex;
     text-align: center;
