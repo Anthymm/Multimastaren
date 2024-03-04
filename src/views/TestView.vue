@@ -1,13 +1,13 @@
 <script>
 import HomeBtn from "../components/HomeBtn.vue";
 import ScoreBtn from "../components/ScoreBtn.vue";
-import RestartTest from "../components/RestartTest.vue"
+import RestartTestBtn from "../components/RestartTestBtn.vue"
 
 export default {
   components: {
     HomeBtn,
     ScoreBtn,
-    RestartTest
+    RestartTestBtn
 
   },
   created() {
@@ -153,6 +153,9 @@ export default {
       localStorage.setItem("testLength", JSON.stringify(this.testLength));
       //Om vi räknar uppåt -> Skicka tiden så den kan stå i Result.
     },
+    reloadPage(){
+      window.location.reload()
+    }
   },
   watch: {
     userAnswer() {
@@ -205,8 +208,10 @@ export default {
             <RestartTest v-if="showScoreBtn"/>
         </div>
     </div>
+        <RestartTestBtn @click="reloadPage" v-if="showScoreBtn"/>
+      </div>
     </div>
-  </div>
+  
 </template>
 
 <style>
