@@ -16,7 +16,7 @@ export default {
                 setTimeout(() => {
                     this.countDown -= 1
                     this.countDownTimer()
-                }, 1000)
+                }, 850)
             } else{
                 router.push("/test")
             }

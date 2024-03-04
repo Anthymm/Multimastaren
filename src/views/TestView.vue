@@ -169,13 +169,8 @@ export default {
 
 <template>
   <div class="bgBoxTest">
-    <div v-if="timeSelected" class="timer">
-      <p>Tid : {{ timer }}</p>
-      <button @click="stopTimer">Stop Timer</button>
-    </div>
     <div id="homeBtnBox">
       <HomeBtn />
-      <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
     </div>
     <div id="questionBox">
       <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
@@ -210,6 +205,11 @@ export default {
         </div>
       </div>
     </div>
+    <div v-if="timeSelected" class="timer">
+      <p>Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
+      <h2>Tid : {{ timer }}</h2>
+      <button @click="stopTimer">Stop Timer</button>
+    </div>
   </div>
 </template>
 
@@ -225,16 +225,18 @@ export default {
   position: absolute;
   bottom: 0px;
   text-align: left;
-  padding-bottom: 40px;
-  /* margin-top: 10px; */
-  font-size: 2vh;
-  color: #fff;
-  /* padding-top: 10px; */
-  padding-left: 10px;
+
+  padding-left: 2rem;
+  position: absolute;
+  bottom: 10px;
 }
 .timer p {
-  font-size: 18px;
-  margin-bottom: 0;
+  font-size: 25px;
+  color: #ffb74b;
+  margin-bottom: -5px;
+}
+.timer h2 {
+  font-size: 40px;
 }
 .text {
   color: #ffb74b;
@@ -244,7 +246,6 @@ p {
   font-size: 4vh;
   color: v-bind("pColor");
 }
-
 #userAnswer {
   text-align: center;
   width: 10vh;
@@ -272,7 +273,7 @@ p {
 
 .bgBoxTest {
   width: 750px;
-  height: 500px;
+  min-height: 500px;
   background-color: #2988be;
   border-radius: 10px;
   margin: auto;
