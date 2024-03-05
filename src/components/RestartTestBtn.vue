@@ -5,8 +5,8 @@ export default {};
   <RouterLink id="restartBtn" to="/test">Kör igen!</RouterLink>
 </template>
 <style>
-#restartBtn{
-  
+#restartBtn {
+
   color: #955a00;
   font-size: 1.8rem;
   text-decoration: none !important;
@@ -15,11 +15,12 @@ export default {};
   text-align: center;
   border-radius: 17px;
 }
+
 #restartBtn:hover {
 
   text-decoration: none;
   font-size: 1.8rem;
-  background-color: #2196F3 ;
-  color:#ffb74b; 
+  background-color: #03273b;
+  color: #ffb74b;
 }
 </style>

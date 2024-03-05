@@ -295,7 +295,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
     .bgBoxTest {
         width: 300px;
         height: 80vh;
@@ -303,6 +303,32 @@ input::-webkit-inner-spin-button {
 
     #questionContainer {
         margin-top: 30%;
+    }
+
+    #homeAndTracker {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #timerQuestiontrackerContainer {
+        padding: 0;
+    }
+
+    #homeBtnBox {
+        padding-bottom: 2vh;
+    }
+
+    #questionContainer {
+        margin-top: 2vh;
+    }
+
+    #afterTestbtnContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bgBoxTest {
+        height: 600px;
     }
 }
 </style>

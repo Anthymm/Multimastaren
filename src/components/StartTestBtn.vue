@@ -16,7 +16,8 @@ export default {};
   border-radius: 17px;
 }
 #testLinkBtn:hover {
+  color: #ffb74b;
+  background-color: #03273b;
   text-decoration: none;
-  font-size: 1.7rem;
 }
 </style>

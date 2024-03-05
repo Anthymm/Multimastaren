@@ -76,16 +76,16 @@ export default {
         </div>
       </div>
         <div class="start">
-          <div class="start-checkbox">   
+          <div class="start-checkbox">
             <div id="SwitchContainer">
-              <h2 id="ejTidText">Ingen tid</h2> 
-              <label class="switch">   
-            <input type="checkbox" v-model="timeSelected">       
-            <span class="slider round"> 
-            </span>          
+              <h2 id="ejTidText">Ingen tid</h2>
+              <label class="switch">
+            <input type="checkbox" v-model="timeSelected">
+            <span class="slider round">
+            </span>
           </label>
           <h2 id="tidText">Tid</h2>
-          </div>  
+          </div>
         </div>
         <div>
           <template v-if="timeSelected">
@@ -95,7 +95,7 @@ export default {
             <StartTestBtn @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
           </template>
         </div>
-        
+
         </div>
         <StartTestTime  v-if="timeSelected" @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }"/>
         <StartTest v-else @click="sendValues" :class="{ disabled: this.selectedTables.length === 0 }" />
@@ -322,7 +322,7 @@ input:checked+.slider:before {
 
 /*HÄR SLUTAR SWITCH*/
 
-@media (max-width: 600px) {
+@media (max-width: 770px) {
   .box {
     width: 300px;
     height: 550px;

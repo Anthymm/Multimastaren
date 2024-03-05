@@ -35,4 +35,9 @@ export default {
 .countDownTimer {
     color: #ffb74b;
 }
+@media (max-width: 750px) {
+    #countDownDiv{
+        width: 50%;
+    }
+}
 </style>

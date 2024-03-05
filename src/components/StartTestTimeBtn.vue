@@ -6,17 +6,19 @@ export default {};
   <RouterLink id="readyLinkBtn" to="/ready">Starta Test!</RouterLink>
 </template>
 <style>
-#readyLinkBtn{
+#readyLinkBtn {
   color: #955a00;
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   text-decoration: none !important;
   background-color: #bcd7e7;
   padding: 0.5rem 2rem;
   text-align: center;
   border-radius: 17px;
 }
+
 #readyLinkBtn:hover {
+  color: #ffb74b;
+  background-color: #03273b;
   text-decoration: none;
-  font-size: 1.7rem;
 }
 </style>
