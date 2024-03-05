@@ -32,7 +32,7 @@ export default {
 </script>
 <template>
     <div id="bgBox">
-    
+
         <div id="homeBtnBox2">
             <HomeBtn class="homeBtn" />
             <h1> {{ userScore }} av {{ testLength }} rätt!</h1>
@@ -75,7 +75,7 @@ export default {
 
 #homeBtnBox2 {
     display: flex;
-    
+
     justify-content: space-between;
     align-items: end;
     text-align: center;
@@ -109,56 +109,59 @@ export default {
 
 @media (max-width: 770px) {
 
-   #resultContainer {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    line-height: 25px;
+    #resultContainer {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        line-height: 25px;
 
-}
-#firstBox {
-   width: 55%;
-}
-#secondBox {
-    width: 55%;
-}
+    }
 
-#bgBox {
-    width: 300px ;
-    min-height: 80vh;
-    background-color: #2988be;
-    border-radius: 10px;
-    margin: auto;
-    padding-bottom: 20px;
-}
-#homeBtnBox2{
-    margin: auto 0;
-    text-align: center;
-    gap: 1%;
-    margin-bottom: 30px;
-}
-#homeBtnBox2 h1{
-    font-size: 30px;
-    margin: auto 0;
-}
-.homeBtn{
-    
-    margin: auto 0;
-   
-}
+    #firstBox {
+        width: 55%;
+    }
 
-#resultContainer {
-margin-bottom: 25px;
-}
+    #secondBox {
+        width: 55%;
+    }
 
-/* #homeBtnBox{
+    #bgBox {
+        width: 350px;
+        min-height: 80vh;
+        background-color: #2988be;
+        border-radius: 10px;
+        margin: auto;
+        padding-bottom: 20px;
+    }
+
+    #homeBtnBox2 {
+        margin: auto 0;
+        text-align: center;
+        gap: 1%;
+        margin-bottom: 30px;
+    }
+
+    #homeBtnBox2 h1 {
+        font-size: 30px;
+        margin: auto 0;
+    }
+
+    .homeBtn {
+
+        margin: auto 0;
+
+    }
+
+    #resultContainer {
+        margin-bottom: 25px;
+    }
+
+    /* #homeBtnBox{
     display: flex;
     gap: 18%;
     align-items: end;
     padding: 2vh;
-   
+
 } */
 }
-
-
 </style>
