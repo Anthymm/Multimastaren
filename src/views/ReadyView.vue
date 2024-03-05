@@ -39,5 +39,7 @@ export default {
     #countDownDiv{
         width: 50%;
     }
+
+   
 }
 </style>

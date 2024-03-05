@@ -29,6 +29,7 @@ export default {
 </script>
 <style>
 *{
+    
     color: #ffb74b;
 }
 </style>
