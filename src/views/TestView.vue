@@ -233,6 +233,8 @@ export default {
 }
 .timer {
   padding-left: 2rem;
+  text-align: left;
+  padding-left: 2rem;
   font-size: 25px;
   color: #ffb74b;
   line-height: 20px;
@@ -248,6 +250,7 @@ export default {
 .questionText {
   color: #ffb74b;
 }
+<<<<<<< HEAD
 .timer {
   text-align: left;
   padding-left: 2rem;
@@ -261,6 +264,11 @@ export default {
   color: #ffb74b;
 }
 
+=======
+.text {
+  color: #ffb74b;
+}
+>>>>>>> e156a46f798b9855cc7c9c9640aa69d8bdf0fd00
 p {
   font-size: 4vh;
   color: v-bind("pColor");
