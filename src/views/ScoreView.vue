@@ -33,7 +33,8 @@ export default {
 <template>
     <div id="bgBox">
         <div id="homeBtnBox2">
-            <HomeBtn /><h1>Du fick {{ userScore }} rätt av {{ testLength }}!</h1>
+            <HomeBtn />
+            <h1>Du fick {{ userScore }} rätt av {{ testLength }}!</h1>
         </div>
         <div id="testResultText">
             <h2>Dina Svar:</h2>
@@ -45,22 +46,23 @@ export default {
                 <div>
                     <!-- Sista 5 svaren -->
                     <p v-for="(el, index) in tables[0].slice(5)">{{ el.question }} {{ userAnswerArray[index + 5] }}</p>
-                </div>  
+                </div>
             </div>
             <p v-if="timer > 0">Tid: {{ timer }} sekunder</p>
-            
+
             <RestartTestBtn />
         </div>
     </div>
 </template>
 <style>
-#resultContainer{
+#resultContainer {
     display: flex;
     justify-content: space-around;
     width: 100%;
     line-height: 25px;
-    
+
 }
+
 #bgBox {
     width: 750px;
     min-height: 500px;
@@ -74,20 +76,22 @@ export default {
     display: flex;
     gap: 18%;
     align-items: end;
-    padding: 5vh;
+    padding: 4vh;
     padding-bottom: 5px;
 }
+
 #homeBtnBox2 h1 {
     font-size: 2rem;
 }
 
-#homeLink  {
+#homeLink {
     display: flex;
     gap: 60%;
     /* align-items: end; */
     /* padding: 5vh; */
- 
+
 }
+
 #testResultText {
     display: flex;
     flex-direction: column;

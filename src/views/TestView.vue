@@ -166,9 +166,22 @@ export default {
 
 <template>
     <div class="bgBoxTest">
-        <div id="homeBtnBox">
-            <HomeBtn />
+        <div id="homeAndTracker">
+            <div id="homeBtnBox">
+                <HomeBtn />
+            </div>
+            <div id="timerQuestiontrackerContainer">
+                <div>
+                    <p class="timer">
+                        Fråga {{ amountQuestionAnswered }} av {{ testLength }}
+                    </p>
+                </div>
+                <div>
+                    <h2 v-if="timeSelected" class="timer">Tid : {{ timer }}</h2>
+                </div>
+            </div>
         </div>
+
         <div id="questionContainer">
             <h1 class="questionText">{{ this.tables[0][this.index].question }}</h1>
             <input type="number" id="userAnswer" v-model="userAnswer" min="0" max="999" :disabled="inputDisabled"
@@ -188,16 +201,6 @@ export default {
                 </div>
             </div>
         </div>
-        <div id="timerQuestiontrackerContainer">
-            <div>
-                <p class="timer">
-                    Fråga {{ amountQuestionAnswered }} av {{ testLength }}
-                </p>
-            </div>
-            <div>
-                <h2 v-if="timeSelected" class="timer">Tid : {{ timer }}</h2>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -208,15 +211,17 @@ export default {
     background-color: #2988be;
     border-radius: 10px;
     margin: auto;
-    position: relative;
+}
+
+#homeAndTracker {
+    display: flex;
+    justify-content: space-between;
 }
 
 #timerQuestiontrackerContainer {
+    padding: 4vh;
     display: flex;
-    height: 10vh;
-    bottom: 0;
-    align-items: end;
-    justify-content: space-between;
+    margin: auto 0;
 }
 
 .timer {
@@ -258,7 +263,7 @@ p {
 #homeBtnBox {
     display: flex;
     gap: 60%;
-    padding: 5vh;
+    padding: 4vh;
 }
 
 #homeBtnBox p {

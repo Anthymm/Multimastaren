@@ -118,7 +118,7 @@ export default {
 nav {
   height: 17vh;
   background-color: #1971A3;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 40px;
 }
 
