@@ -172,8 +172,8 @@ export default {
     <div id="homeBtnBox">
       <HomeBtn />
     </div>
-    <div id="questionBox">
-      <h1 class="text">{{ this.tables[0][this.index].question }}</h1>
+    <div id="questionContainer">
+      <h1 class="questionText">{{ this.tables[0][this.index].question }}</h1>
       <input
         type="number"
         id="userAnswer"
@@ -186,7 +186,7 @@ export default {
       />
       <input
         type="button"
-        id="btnAnswer"
+        id="AnswerAndNextQuestionBtn"
         @click="switchBtn ? onAnswer() : nextQuestion()"
         @keydown.enter="switchBtn ? onAnswer() : nextQuestion()"
         :value="btnText"
@@ -194,18 +194,18 @@ export default {
         ref="buttonInput"
       />
       <p>{{ correctAnswer }}</p>
-      <div id="bigBtn">
+      <div id="afterTestbtnContainer">
         <div id="afterScoreBtn">
           <ScoreBtn @click="sendValues" v-if="showScoreBtn" />
         </div>
         <div id="afterResultBtn">
           <RestartTest v-if="showScoreBtn" />
-
+          
           <RestartTestBtn @click="reloadPage" v-if="showScoreBtn" />
         </div>
       </div>
     </div>
-    <div>
+    <div id="timerQuestiontrackerContainer">
       <p class="timer">Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
       <h2 v-if="timeSelected" class="timer">Tid : {{ timer }}</h2>
       <!-- <button @click="stopTimer" class="stopButton">Stop</button> -->
@@ -214,42 +214,38 @@ export default {
 </template>
 
 <style>
-#bigBtn {
+.bgBoxTest {
+  width: 750px;
+  min-height: 500px;
+  background-color: #2988be;
+  border-radius: 10px;
+  margin: auto;
+  position: relative;
+}
+#timerQuestiontrackerContainer {
+  display: flex;
+  height: 100%;
+  position: absolute; 
+  bottom: 0;
+  align-items:end;
+}
+.timer {
+  padding-left: 2rem;
+  font-size: 25px;
+  color: #ffb74b;
+  line-height: 20px;
+}
+
+#afterTestbtnContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
   margin-top: 40px;
 }
 
-.timer {
-  /* position: absolute; */
-  /* margin-bottom: 0px; */
-  text-align: left;
-  padding-left: 2rem;
-  /* position: absolute; */
-  /* bottom: 10px; */
-  font-size: 25px;
-  color: #ffb74b;
-  line-height: 20px;
-  
-}
-/* .timer p {
-  font-size: 25px;
-  color: #ffb74b;
-} */
-
-/* .timer h2 {
-  font-size: 40px;
-} */
-.text {
+.questionText {
   color: #ffb74b;
 }
-
-/* .stopButton {
-  font-size: 1.5rem;
-  padding: 0 0.5rem;
-  color: #03273b;
-} */
 p {
   font-size: 4vh;
   color: v-bind("pColor");
@@ -272,22 +268,14 @@ p {
   color: #03273b;
 }
 
-#btnAnswer {
+#AnswerAndNextQuestionBtn {
   margin-top: 3vh;
   font-size: 1.5rem;
   padding: 0 0.5rem;
   color: #03273b;
 }
 
-.bgBoxTest {
-  width: 750px;
-  min-height: 500px;
-  background-color: #2988be;
-  border-radius: 10px;
-  margin: auto;
-}
-
-#questionBox {
+#questionContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -310,7 +298,7 @@ input::-webkit-inner-spin-button {
     height: 80vh;
   }
 
-  #questionBox {
+  #questionContainer {
     margin-top: 30%;
   }
 }
