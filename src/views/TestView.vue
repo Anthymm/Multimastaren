@@ -45,14 +45,12 @@ export default {
     },
     startTimer() {
       if (this.timeSelected) {
-        // Start the timer to count up every second
         this.timerInterval = setInterval(() => {
           this.timer++;
         }, 1000);
       }
     },
     stopTimer() {
-      // Stop the timer
       clearInterval(this.timerInterval);
     },
 
@@ -149,7 +147,7 @@ export default {
         JSON.stringify(this.userAnswerArray)
       );
       localStorage.setItem("testLength", JSON.stringify(this.testLength));
-      localStorage.setItem("timer", JSON.stringify(this.timer)); 
+      localStorage.setItem("timer", JSON.stringify(this.timer));
     },
     reloadPage() {
       window.location.reload();
@@ -207,9 +205,13 @@ export default {
     </div>
     <div id="timerQuestiontrackerContainer">
       <p class="timer">Fråga {{ amountQuestionAnswered }} av {{ testLength }}</p>
+    <div>
+      <p class="timer">
+        Fråga {{ amountQuestionAnswered }} av {{ testLength }}
+      </p>
       <h2 v-if="timeSelected" class="timer">Tid : {{ timer }}</h2>
-      <!-- <button @click="stopTimer" class="stopButton">Stop</button> -->
     </div>
+  </div>
   </div>
 </template>
 
@@ -246,6 +248,19 @@ export default {
 .questionText {
   color: #ffb74b;
 }
+.timer {
+  text-align: left;
+  padding-left: 2rem;
+
+  font-size: 25px;
+  color: #ffb74b;
+  line-height: 20px;
+}
+
+.text {
+  color: #ffb74b;
+}
+
 p {
   font-size: 4vh;
   color: v-bind("pColor");
