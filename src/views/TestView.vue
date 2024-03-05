@@ -198,7 +198,7 @@ export default {
         </div>
         <div id="afterResultBtn">
           <RestartTest v-if="showScoreBtn" />
-          
+
           <RestartTestBtn @click="reloadPage" v-if="showScoreBtn" />
         </div>
       </div>
@@ -227,7 +227,7 @@ export default {
 #timerQuestiontrackerContainer {
   display: flex;
   height: 100%;
-  position: absolute; 
+  position: absolute;
   bottom: 0;
   align-items:end;
 }
@@ -250,25 +250,9 @@ export default {
 .questionText {
   color: #ffb74b;
 }
-<<<<<<< HEAD
-.timer {
-  text-align: left;
-  padding-left: 2rem;
-
-  font-size: 25px;
-  color: #ffb74b;
-  line-height: 20px;
-}
-
 .text {
   color: #ffb74b;
 }
-
-=======
-.text {
-  color: #ffb74b;
-}
->>>>>>> e156a46f798b9855cc7c9c9640aa69d8bdf0fd00
 p {
   font-size: 4vh;
   color: v-bind("pColor");
