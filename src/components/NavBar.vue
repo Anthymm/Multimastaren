@@ -97,7 +97,6 @@ export default {
   <nav>
     <div>
       <h1>MultiMästaren</h1>
-      <h2>Maximera din kunskap, multiplicera din framgång!</h2>
     </div>
   </nav>
 </template>
@@ -138,10 +137,8 @@ nav div {
   overflow: hidden;
 }
 
-
-nav div h2 {
-  font-size: 2vw;
-  margin-top: 1%;
+nav div h1 {
+  font-size: 6vw;
 }
 
 .object {
@@ -157,13 +154,6 @@ nav div h2 {
     font-size: 10vw;
     line-height: 150%;
   }
-
-  nav div h2 {
-    display: flex;
-    text-align: center;
-    margin-top: 0;
-    font-size: 3vw;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -172,10 +162,8 @@ nav div h2 {
     line-height: 150%;
   }
 
-  nav div h2 {
-    display: flex;
-    text-align: center;
-    font-size: 8vw;
+  nav div h1 {
+    font-size: 15vw;
   }
 }
 </style>
